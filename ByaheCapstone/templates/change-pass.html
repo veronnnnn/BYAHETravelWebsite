@@ -13,8 +13,8 @@
 </head>
 <body>
     <div class="container mt-5 position-relative">
-        <a href="index.html" class="back-btn text-decoration-none position-absolute">&#x2190; Back</a>
-        <a href="sign-up.html" class="signup-link text-decoration-none position-absolute">Don't have an account? Sign up now</a>
+        <a href="{% url 'home' %}" class="back-btn text-decoration-none position-absolute">&#x2190; Back</a>
+        <a href="{% url 'signup' %}" class="signup-link text-decoration-none position-absolute">Don't have an account? Sign up now</a>
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-5">
                 <div class="text-center mb-4" style="margin-top: 100px;">
@@ -22,17 +22,31 @@
                 </div>
                 <div class="card p-4">
                     <h1 class="h4 text-center mb-3">Change Password?</h1>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if message.tags == 'error' %}
+                                <center><h4 style="color: firebrick;">{{message}}</h4></center>
+                            {% else %}
+                                <center><h4 style="color: dodgerblue;">{{message}}</h4></center>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+
                     <p class="text-center text-muted mb-4">Enter your new password</p>
                     <form action="#" method="POST">
+
+                        {% csrf_token %}
+
                         <div class="col mb-3">
                             <div class="col-md-12 position-relative">
                                 <label for="password" class="form-label">New Password</label>
-                                <input type="password" id="password" name="password" class="form-control" required>
+                                <input type="password" id="password" required name="password" class="form-control">
                                 <small class="text-muted">Use 8 or more characters.</small>
                             </div>
-                            <div class="col-md-12    position-relative">
+                            <div class="col-md-12 position-relative">
                                 <label for="confirm-password" class="form-label">Confirm Password</label>
-                                <input type="password" id="confirm-password" name="confirm-password" class="form-control" required>
+                                <input type="password" id="confirm-password" required name="confirm-password" class="form-control">
                             </div>
                         </div>
                         <button type="submit" class="btn custom-btn w-100">Change Password</button>

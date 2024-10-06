@@ -63,5 +63,6 @@ def SignUpView(request):
 def SignInView(request):
     return render(request, 'sign-in.html')
 
+
 def ForgotPasswordView(request):
     return render(request, 'forgot-password.html')
