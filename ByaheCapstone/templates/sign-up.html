@@ -32,7 +32,7 @@
                             {% endfor %}
                     {% endif %}
 
-                    <form action="{% url 'signup' %}" method="POST">
+                    <form method="POST">
 
                         {% csrf_token %}
                         {{ form.as_p }}

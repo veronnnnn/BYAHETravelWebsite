@@ -8,6 +8,7 @@ from django.core.mail import EmailMessage
 from django.utils import timezone
 from django.urls import reverse
 from .models import *
+from .models import Profile
 
 def Home(request):
     return render(request, 'index.html')
@@ -39,20 +40,29 @@ def SignUpView(request):
             user_data_has_error = True
             messages.error(request, "Password should be at least 8 characters long")
 
+        if password != confirm_password:
+            user_data_has_error = True
+            messages.error(request, "Passwords do not match")
+
         if user_data_has_error :
             return redirect('signup')
         else: 
-            new_user = User.object.create_user(
+            new_user = User.objects.create_user(
 
                 username = username,
                 first_name = first_name,
                 last_name = last_name,
-                contact_number = contact_number,
                 email = email,
-                address = address,
                 password = password,
-                confirm_password = confirm_password,
             )
+
+            # Create Profile with additional fields
+            Profile.objects.create(
+                user=new_user,
+                contact_number=contact_number,
+                address=address,
+            )
+
             messages.success(request, 'Account created successfully. Please log in now')
             return redirect('signin')
 
