@@ -1,0 +1,329 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+    Homepage | Byahe Travel
+{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static '/styles/styles.css' %}">
+{% endblock style%}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand logo" href="#">
+            <img src="{% static '/images/backgrounds/byahe-logo.png' %}" alt="Logo" class="navbar-logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about-us">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#book-your-ride">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#vehicles-section">Vehicles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#ratings-and-reviews">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacts">Contact</a>
+                </li>
+            </ul>
+            <a href="{% url 'signin' %}" class="btn get-started-btn">Get Started</a>
+
+            {% comment %} user icon and log out button {% endcomment %}
+            <div class="navbar-icons ms-3 d-flex align-items-center">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-user-circle" style="font-size: 1.5rem;"></i>
+                </a>
+                <a href="{% url 'logout' %}" class="nav-link ms-3">
+                    <i class="fas fa-sign-out-alt" style="font-size: 1.5rem;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+{% endblock navbar %}
+
+{% block hero_section %}
+<section id="hero" style="
+    color: white;
+    min-height: 50vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 40px;
+    margin-top: 40px;
+    text-align: left;
+    background-image: url('{% static 'images/backgrounds/hero-section-image.png' %}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    ">
+    <div class="hero-content">
+        <h1>Byahe: Smooth Travel Experiences</h1>
+        <p>Explore a new way to travel with our online reservation system, secure payment options, and real-time GPS tracking.</p>
+        <a href="#" class="learn-more-btn">Learn More</a>
+    </div>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/q9luhiQdXLA?si=VPJ14oR5SC8j4ver" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</section>
+{% endblock hero_section %}
+
+{% block about %}
+<section id="about-us">
+    <div class="about-content">
+        <h1>Secure Online Payment System for Easy Transactions</h1>
+        <p>Experience hassle-free online payments with BYAHE's secure payment system. Choose from a variety of payment options for your convenience.</p>
+        <div class="button-container">
+            <a href="#" class="sign-up-btn">Sign Up</a>
+            <span class="or-text">or</span>
+            <a href="#" class="log-in-btn">Log In</a>
+        </div>
+    </div>
+    <div class="about-image">
+        <img src="{% static '/images/landing-page-img/landing-2.jpg' %}" alt="About Us Image">
+    </div>
+</section>
+
+<section id="about-us-reverse">
+    <div class="about-image">
+        <img src="{% static '/images/landing-page-img/landing-1res.jpg' %}" alt="About Us Image">
+    </div>
+    <div class="about-content">
+        <h1>Book Your Reservation Online</h1>
+        <p>With BYAHE’s online reservation form, you can easily book a reservation and start your travels.</p>
+    </div>
+</section>
+{% endblock about %}
+
+{% block services %}
+<section id="book-your-ride">
+    <h2>Book Your Ride</h2>
+    <p>Experience convenience and reliable transportation with our services.</p>
+    <div class="services-grid">
+        <div class="service-card">
+            <h3>How It Works</h3>
+            <p>Sign up, make a reservation, rate us.</p>
+        </div>
+        <div class="service-card">
+            <h3>Browse Vehicles</h3>
+            <p>Have a brief overview of the vehicles we offer for service.</p>
+        </div>
+        <div class="service-card">
+            <h3>Make a Reservation</h3>
+            <p>Book your ride online with our easy reservation form.</p>
+        </div>
+        <div class="service-card">
+            <h3>Online Payment</h3>
+            <p>Finalize your transaction with our online payment options.</p>
+        </div>
+    </div>
+</section>
+{% endblock services %}
+
+{% block vehicles %}
+<section id="vehicles-section">
+    <div class="vehicles-hero" style="height: 250px; position: relative; padding: 40px 20px; padding-top: 20px; padding-bottom: 20px; background-image: url('{% static 'images/backgrounds/vehicle-bg.jpg' %}'); background-size: 100% auto; background-position: center; background-repeat: no-repeat; width: 100%; color: #ffffff; overflow: hidden;">
+        <div style="content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(4, 51, 114, 0.55); z-index: 1;"></div>
+        <h1 style="position: relative; z-index: 2;">Vehicles</h1>
+        <p style="text-align: center; position: relative; z-index: 2;">Get an overview of our available vehicles.</p>
+    </div>
+
+    <div class="vehicles-content">
+        <h2>Our Available Vehicles</h2>
+        <p>Explore our fleet of well-maintained vehicles, ready to take you on your next journey.</p>
+
+        <h3>Class A Vehicles</h3>
+        <div class="vehicle-cards" id="vehicle-cards">
+            <div class="vehicle-card" data-href="/vehicles/taxi1.html">
+                <img src="{% static 'images/vehicles/taxi-1.jpg' %}" alt="Toyota Vios 1">
+                <p style= "text-align: center;">Toyota Vios 1</p>
+            </div>
+            <div class="vehicle-card" data-href="/vehicles/taxi2.html">
+                <img src="{% static 'images/vehicles/taxi-2.jpg' %}" alt="Toyota Corolla Z">
+                <p style= "text-align: center;">Toyota Corolla Z</p>
+            </div>
+            <div class="vehicle-card" data-href="/vehicles/taxi3.html">
+                <img src="{% static 'images/vehicles/taxi-3.jpg' %}" alt="Toyota Vios 2">
+                <p style= "text-align: center;">Toyota Vios 2</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="vehicles-content">
+        <h3>Class B Vehicles</h3>
+        <div class="vehicle-cards" id="vehicle-cards-b">
+            <div class="vehicle-card" data-href="/vehicles/minibus1.html">
+                <img src="{% static 'images/vehicles/mini-bus1.jpg' %}" alt="Modernized PUV (Mini Bus)">
+                <p style= "text-align: center;">Modernized PUV (Mini Bus)</p>
+            </div>
+            <div class="vehicle-card" data-href="/vehicles/minibus2.html">
+                <img src="{% static 'images/vehicles/mini-bus2.jpg' %}" alt="Modernized PUV (Mini Bus) V2">
+                <p style= "text-align: center;">Modernized PUV (Mini Bus) V2</p>
+            </div>
+            <div class="vehicle-card" data-href="/vehicles/minibus3.html">
+                <img src="{% static 'images/vehicles/mini-bus3.jpg' %}" alt="Modernized PUV (Mini Bus) V3">
+                <p style= "text-align: center;">Modernized PUV (Mini Bus) V3</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+</section>
+{% endblock vehicles %}
+
+{% block ratings %}
+<section id="ratings-and-reviews-hero">
+
+    <div class="ratings-hero"style="
+    background-image: url('{% static 'images/backgrounds/ratingss.jpg' %}'); /* Replace with actual static path */
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    z-index: 1;">
+        <h1>Ratings and Reviews</h1>
+    </div>
+
+<section id="ratings-and-reviews">
+    <div class="container my-5">
+        <h3 class="text-center">Ratings and Reviews</h3>
+        <!-- Your existing content (reviews, ratings) goes here -->
+    </div>
+    
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card p-4 shadow-sm overall-rating-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-5 text-center">
+                            <h3 class="mb-0">Overall rating</h3>
+                            <div class="rating-stars my-3">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                            <div class="overall-score">
+                                <p class="mb-0">5 out of 5</p>
+                                <p class="text-muted">232 reviews</p>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="rating-bar">
+                                <div class="rating-bar-item">
+                                    <span>5 stars</span>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-warning" style="width: 90%;"></div>
+                                    </div>
+                                </div>
+                                <div class="rating-bar-item">
+                                    <span>4 stars</span>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-secondary" style="width: 10%;"></div>
+                                    </div>
+                                </div>
+                                <div class="rating-bar-item">
+                                    <span>3 stars</span>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-secondary" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="rating-bar-item">
+                                    <span>2 stars</span>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-secondary" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                                <div class="rating-bar-item">
+                                    <span>1 star</span>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-secondary" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Single Review -->
+            <div class="card p-3 mb-3 shadow-sm">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="rating-stars">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </div>
+                    <div class="ms-3">
+                        <h6>Ann Nica, 03/16/2024</h6>
+                    </div>
+                </div>
+                <p class="mb-0">Great experience with byahе, they offer amazing travel services especially their convenient online payment with gcash. Will definitely book here again!</p>
+            </div>
+            <!-- Repeat for other reviews -->
+            <div class="card p-3 mb-3 shadow-sm">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="rating-stars">
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </div>
+                    <div class="ms-3">
+                        <h6>Zerep Adalph, 03/28/2024</h6>
+                    </div>
+                </div>
+                <p class="mb-0">Great experience with byahе, they offer amazing travel services especially their convenient online payment with gcash. Will definitely book here again!</p>
+            </div>
+            <!-- Add more reviews as needed -->
+        </div>
+    </div>
+</section>
+{% endblock ratings %}
+
+{% block script_index %}    
+<script>
+    //script for class a vehicles
+    document.getElementById("vehicle-cards").addEventListener("click", function(event) {
+        const target = event.target.closest(".vehicle-card");
+        if (target) {
+            const url = target.dataset.href;
+            window.location.href = url;
+        }
+    });
+
+    // Script for Class B vehicles
+    document.getElementById("vehicle-cards-b").addEventListener("click", function(event) {
+        const target = event.target.closest(".vehicle-card");
+        if (target) {
+            const url = target.dataset.href;
+            window.location.href = url;
+        }
+    });
+</script>
+{% endblock script_index %}            

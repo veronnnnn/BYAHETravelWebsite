@@ -1,0 +1,1068 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.navbar-logo {
+    height: 55px; /* Control the height to fit within the navbar */
+    width: auto;  /* Maintain aspect ratio */
+    padding-left: 40px;
+    padding-right: 10px; /* Space between logo and navbar items */
+  }
+
+.navbar-brand {
+    font-size: 24px;
+    color: #b05050 !important;
+}
+
+.nav-link {
+    color: black !important;
+    font-size: large;
+    padding: 5px 10px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+    background: #004AAD;
+    color: white !important;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background: #004AAD;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: #003580;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+/* Ensure the navbar remains visible on scroll */
+.fixed-top {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.get-started-btn{
+    background: #004AAD;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+    margin-left: 25px;
+    margin-right: 40px;
+    display:inline-block;
+    font-size: large;
+}
+
+.get-started-btn:hover {
+    background: #003580; /* Optionally darken the background */
+    color: white; /* Keep text color the same */
+}
+
+.learn-more-btn {
+    background: #004AAD;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.3s;
+    display:inline-block;
+}
+
+.learn-more-btn:hover {
+    background: #003580; /* Optionally darken the background */
+    color: white; /* Keep text color the same */
+}
+
+section {
+    padding: 80px 20px; /* Added top padding to accommodate fixed nav */
+    text-align: center;
+}
+
+
+#hero {
+    color: white;
+    min-height: 50vh; /* Adjusted height to make it look balanced */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 40px;
+    margin-top: 40px;
+    text-align: left;
+    background-image: url('../images/backgrounds/hero-section-image.png'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#hero h1 {
+    font-size: 3.5em;
+    margin: 0;
+    color: white;
+}
+
+#hero p {
+    font-size: 1.5em;
+    margin: 20px 0;
+    color: white;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay to ensure text readability */
+    z-index: 1; /* Ensure the overlay stays behind content */
+}
+
+/* Adjust the content styling to work with the new overlay */
+.hero-content {
+    position: relative; /* Ensure the content is above the overlay */
+    flex: 1;
+    max-width: 50%;
+    padding-right: 20px; /* Space between text and video */
+    padding: 40px; /* Adds padding inside the div to ensure content is readable */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    z-index: 2; /* Ensure content appears above the background */
+    color: white; /* Ensure the text is readable on the background */
+}
+
+/* Ensure video container is above the overlay */
+.video-container {
+    flex: 1;
+    position: relative;
+    max-width: 45%; /* Adjusted the width to make space for the text */
+    height: auto;
+    margin-left: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 3; /* Ensure the video is clickable and above the overlay */
+}
+
+
+
+#about-us, #about-us-reverse{
+    color: black;
+    min-height: 45vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 40px;
+    margin-left: 37px;
+    padding: 80px 40px; /* Adjust as needed */
+    background-color: #f8f9fa;
+    background-size: 1125px 750px;
+    text-align: left;
+}
+
+.about-content, .about-image {
+    flex: 1;
+    max-width: 50%;
+}
+
+.about-content {
+    padding-right: 40px;
+}
+
+.about-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sign-up-btn {
+    background: #004AAD;
+    color: white;
+    padding: 15px 30px;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.3s;
+    display: inline-block;
+}
+
+.sign-up-btn:hover {
+    background: #003580;
+    color: white;
+}
+
+.or-text {
+    margin: 0 15px;
+    font-size: 15px;
+    line-height: 40px; /* Adjust to vertically center the text between the buttons */
+}
+
+.log-in-btn {
+    background: #004AAD; /* Same background color */
+    color: white;        /* Same text color */
+    padding: 15px 30px; /* Same padding */
+    font-weight: bold;   /* Same font weight */
+    font-size: 1.2em;    /* Same font size */
+    text-decoration: none; /* No underline */
+    border-radius: 10px;  /* Same border radius */
+    transition: background 0.3s; /* Same transition */
+    display: inline-block; /* Same display */
+}
+
+.log-in-btn:hover {
+    background: #003580; /* Same hover effect */
+    color: white;        /* Same hover text color */
+}
+
+/* Reverse section adjustment */
+#about-us-reverse .about-content {
+    padding-left: 40px;
+}
+
+/* Base styles for larger screens */
+#book-your-ride {
+    color: black;
+    padding: 60px 40px;
+    margin-left: 40px;
+    text-align: left;
+    background-color: #f8f9fa;
+}
+
+#book-your-ride h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+#book-your-ride p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+/* Services grid for larger screens */
+.services-grid {
+    padding-top: 40px;
+    margin-left: 150px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    justify-content: center;
+}
+
+.service-card {
+    background-color: white;
+    width: 350px;
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: 0 15px 12px rgba(0, 0, 0, 0.224);
+    text-align: left;
+}
+
+.service-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.service-card p {
+    font-size: 1em;
+    color: #333;
+}
+
+#vehicles-section {
+    background-color: #ffffff;
+    padding: 60px 20px;
+}
+
+.vehicles-hero {
+    height: 250px;
+    position: relative;
+    padding: 40px 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-image: url('images/backgrounds/vehicle-bg.jpg');
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat; /* Ensure the image doesn’t repeat */
+    width: 100%; /* Set the width to cover the entire viewport width */
+    color: #ffffff;
+    overflow: hidden;
+}
+
+
+.vehicles-hero h1 {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 3em;
+    position: relative;
+    z-index: 2; /* Ensure the text sits above the overlay */
+}
+
+.vehicles-hero p {
+    font-size: 1.5em;
+    position: relative;
+    z-index: 2; /* Ensure the text sits above the overlay */
+}
+
+.vehicles-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.vehicles-content h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.vehicles-content p {
+    font-size: 1.2em;
+    color: #6c757d;
+    margin-bottom: 40px;
+}
+
+.vehicles-content h3 {
+    font-size: 1.8em;
+    font-weight: 100;
+    color: #000000;
+    margin-bottom: 20px;
+    padding-bottom: 40px;
+    text-align: left;
+}
+
+.vehicle-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.vehicle-card {
+    background-color: #ffffff;
+    padding: 10px;;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.407);
+    text-align: center;
+    height: 250px;
+    width: 280px;
+    box-sizing: border-box;
+}
+
+.vehicle-card img {
+    max-width: 100%;
+    height: 150px;
+    width: 250px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    margin-top: 25px;
+}
+
+.vehicle-card p {
+    font-size: 1.5em;
+    color: #000000;
+}
+
+.vehicle-card-link {
+    display: block; /* Make the anchor tag a block-level element */
+    text-decoration: none; /* Remove the underline from the link */
+    color: inherit; /* Ensure the text color is inherited */
+}
+
+.vehicle-card-bus{
+    padding-left: 120px;
+    background-color: #ffffff;
+    padding: 10px;;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.407);
+    text-align: center;
+    height: 250px;
+    width: 280px;
+}
+
+.vehicle-card-bus img {
+    max-width: 100%;
+    height: 150px;
+    width: 250px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    margin-top: 25px;
+}
+
+.vehicle-card-bus p {
+    font-size: 1.5em;
+    color: #000000;
+}
+/*ratings and reviews*/
+.ratings-hero {
+    background-image: url('/images/backgrounds/ratingss.jpg'); /* Replace with actual path */
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.ratings-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsla(212, 100%, 28%, 0.46); /* Dark overlay to enhance text visibility */
+    z-index: -1;
+}
+
+.ratings-hero h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 0px;
+}
+
+
+.overall-rating-card {
+    border-radius: 15px;
+}
+
+.checked {
+    color: #FFA500;
+}
+
+.rating-stars span {
+    font-size: 32px;
+}
+
+.overall-score p {
+    font-size: 18px;
+    margin: 0;
+}
+
+.rating-bar-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.rating-bar-item span {
+    width: 70px;
+    font-size: 14px;
+    color: #555;
+}
+
+.progress {
+    flex-grow: 1;
+    height: 8px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.progress-bar {
+    height: 8px;
+    border-radius: 5px;
+}
+
+
+/*footer*/
+/* Footer General Styling */
+/* Base footer styles */
+.bg-primary {
+    background-color: #0052cc !important;
+    padding: 30px 0;
+    width: 100%; /* Ensure the blue footer takes the full width */
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: space-between; /* Distribute content evenly */
+    padding-left: 50px; /* Add space between left content and edge */
+    padding-right: 50px; /* Add space between right content and edge */
+    margin: 0 auto;
+    max-width: 100%; /* Ensure it spans the full width */
+}
+
+/* Contact Information aligned to the right */
+/* Contact Information aligned to the right */
+.contact-info ul {
+    text-align: right; /* Aligns all list content to the right */
+    list-style: none;  /* Removes default list styling */
+    padding: 0;
+}
+
+.contact-info li {
+    display: flex;
+    justify-content: flex-end; /* Ensures the icon and text stay on the right */
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contact-info li i {
+    margin-left: 10px; /* Adjust the margin for the icon */
+    margin-right: 0; /* Ensure no margin on the right */
+}
+
+.contact-info li a, 
+.contact-info li span {
+    text-align: right; /* Text inside list items aligned to the right */
+    display: inline-block;
+}
+
+/* Title aligned to the left */
+h2 {
+    font-weight: bold;
+    text-align: left;
+    margin-left: 0; /* Align text to the left */
+}
+
+p {
+    text-align: left;
+}
+
+/* Additional styling for list items */
+.list-unstyled li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.list-unstyled i {
+    margin-right: 10px;
+}
+
+/* Footer Bottom Styling */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between; /* Align BYAHE on left and links on right */
+    align-items: center;
+    padding: 20px 50px; /* Add padding for spacing */
+    width: 100%; /* Ensure footer bottom spans full width */
+}
+
+/* Align BYAHE text to the left */
+.footer-bottom h5 {
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Align the list of links to the right */
+.list-inline {
+    display: flex;
+    justify-content: flex-end; /* Keep links on the right */
+}
+
+.list-inline-item a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.list-inline-item a:hover {
+    text-decoration: underline;
+}
+
+
+
+/*Hero section responsiveness*/
+/* Responsive Styles */
+
+/* Responsive Styling */
+@media (max-width: 992px) {
+    .contact-info {
+        text-align: center; /* Center aligns for tablets */
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .list-inline {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .contact-info ul {
+        padding-left: 0;
+    }
+
+    .contact-info {
+        text-align: center; /* Center aligns for mobile */
+    }
+
+    .footer-bottom {
+        padding: 10px 0;
+    }
+
+    .footer-bottom .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .list-inline {
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .list-inline-item {
+        margin-bottom: 5px;
+    }
+}
+
+
+/* Tablets and medium screens (992px and below) */
+@media (max-width: 992px) {
+    #hero {
+        flex-direction: column; /* Stack content vertically */
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .hero-content {
+        max-width: 100%; /* Full width for content */
+        padding: 20px;
+    }
+
+    .video-container {
+        max-width: 100%; /* Full width for video */
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    #hero h1 {
+        font-size: 2.5em; /* Reduce font size */
+    }
+
+    #hero p {
+        font-size: 1.2em; /* Adjust paragraph font size */
+    }
+}
+
+/* Small screens (768px and below) */
+@media (max-width: 768px) {
+    #hero {
+        padding: 30px 15px;
+    }
+
+    .hero-content {
+        padding: 10px;
+    }
+
+    #hero h1 {
+        font-size: 2.2em; /* Further reduce font size for mobile */
+    }
+
+    #hero p {
+        font-size: 1.1em;
+    }
+
+    .video-container {
+        max-width: 100%;
+        margin-top: 20px;
+    }
+}
+
+/* Extra-small screens (576px and below) */
+@media (max-width: 576px) {
+    #hero {
+        padding: 20px 10px;
+        min-height: auto; /* Remove fixed height for better stacking */
+    }
+
+    .hero-content {
+        padding: 10px;
+        text-align: center;
+        margin: 0 auto; 
+        padding: 10px;
+    }
+
+    #hero h1 {
+        font-size: 1.8em;
+    }
+
+    #hero p {
+        font-size: 1em;
+    }
+
+    .video-container {
+        max-width: 100%; /* Full width for video */
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sign-up-btn, .log-in-btn {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .or-text {
+        margin: 10px 0;
+        line-height: normal; /* Adjusts the text position between the stacked buttons */
+    }
+}
+
+/*about us responsiveness*/
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+    .about-content h1 {
+        font-size: 3em;
+    }
+
+    .about-content p {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 992px) {
+    #about-us, #about-us-reverse {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px;
+    }
+
+    .about-content {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+
+    .about-content h1 {
+        font-size: 2.5em;
+    }
+
+    .about-content p {
+        font-size: 1.2em;
+    }
+
+    .sign-up-btn {
+        margin: 20px auto;
+    }
+
+    .log-in-btn {
+        margin: 20px auto;
+    }
+
+    .about-image {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .about-image img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #about-us, #about-us-reverse {
+        padding: 20px;
+    }
+
+    .about-content h1 {
+        font-size: 2em;
+    }
+
+    .about-content p {
+        font-size: 1em;
+    }
+
+    .about-image img {
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-content h1 {
+        font-size: 1.8em;
+    }
+
+    .about-content p {
+        font-size: 1em;
+    }
+
+    .about-image img {
+        width: 80%;
+    }
+}
+
+
+/* Responsive styles for services section */
+
+/* Medium screens (tablets, up to 992px wide) */
+@media (max-width: 992px) {
+    #book-your-ride {
+        padding: 40px 20px;
+        margin-left: 20px;
+    }
+
+    #book-your-ride h2 {
+        font-size: 2em;
+    }
+
+    #book-your-ride p {
+        font-size: 1.1em;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Switch to a single column */
+        margin-left: 40px;
+        gap: 30px;
+    }
+
+    .service-card {
+        width: 90%; /* Adjust card width for tablets */
+        margin: 0 auto 30px;
+    }
+}
+
+/* Small screens (phones, up to 768px wide) */
+@media (max-width: 768px) {
+    #book-your-ride {
+        padding: 30px 15px;
+        margin-left: 0;
+    }
+
+    #book-your-ride h2 {
+        font-size: 1.8em;
+    }
+
+    #book-your-ride p {
+        font-size: 1em;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Keep single column layout */
+        gap: 20px;
+        margin-left: 0;
+    }
+
+    .service-card {
+        width: 100%; /* Full width for small screens */
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+        font-size: 1.3em;
+    }
+
+    .service-card p {
+        font-size: 0.95em;
+    }
+}
+
+/* Extra-small screens (up to 576px wide) */
+@media (max-width: 576px) {
+    #book-your-ride {
+        padding: 20px 10px;
+        text-align: center;
+    }
+
+    #book-your-ride h2 {
+        font-size: 1.5em;
+    }
+
+    #book-your-ride p {
+        font-size: 0.9em;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Single column for extra-small screens */
+        gap: 15px;
+    }
+
+    .service-card {
+        width: 100%; /* Full width */
+        margin-bottom: 15px;
+    }
+
+    .service-card h3 {
+        font-size: 1.2em;
+    }
+
+    .service-card p {
+        font-size: 0.9em;
+    }
+}
+
+/*navbar responsivness*/
+
+@media (max-width: 992px) {
+    .navbar-nav {
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 5px 0;
+    }
+
+    .get-started-btn {
+        display: block;
+        margin: 10px auto;
+        width: fit-content;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+
+    #hero h1 {
+        font-size: 2.5em;
+    }
+
+    #hero p {
+        font-size: 1.2em;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .service-card {
+        padding: 20px;
+    }
+
+    .vehicle-card {
+        height: auto;
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav .nav-item {
+        margin-left: 5px;
+    }
+
+    .hero-content {
+        padding: 20px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .about-content h1 {
+        font-size: 2.5em;
+    }
+
+    .about-content p {
+        font-size: 1.2em;
+    }
+
+    .learn-more-btn {
+        padding: 10px 20px;
+        font-size: 1em;
+        margin: 10px 0;
+    }
+
+    .vehicle-card img {
+        height: 120px;
+    }
+
+    .vehicle-card p {
+        font-size: 1em;
+    }
+}
+
+/* Responsive Design for Ratings and review*/
+@media (max-width: 1200px) {
+    .ratings-hero {
+        height: 150px;  /* Slightly reduced height for smaller screens */
+    }
+    .ratings-hero h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .ratings-hero {
+        height: 130px;
+    }
+    .ratings-hero h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .ratings-hero {
+        height: 120px;
+    }
+    .ratings-hero h1 {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .ratings-hero {
+        height: 100px;
+    }
+    .ratings-hero h1 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .ratings-hero {
+        height: 90px;  /* Smaller height for very small screens */
+    }
+    .ratings-hero h1 {
+        font-size: 1rem;
+    }
+}
