@@ -607,6 +607,17 @@ p {
 /*Hero section responsiveness*/
 /* Responsive Styles */
 
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center; /* Center the navigation links */
+    }
+
+    .navbar-nav .nav-item {
+        margin-left: 0; /* Remove left margin to center items */
+        margin-bottom: 10px; /* Add spacing between items */
+    }
+}
+
 /* Responsive Styling */
 @media (max-width: 992px) {
     .contact-info {
@@ -959,6 +970,7 @@ p {
     }
 }
 
+
 @media (max-width: 768px) {
     .navbar-brand {
         font-size: 20px;
@@ -986,6 +998,8 @@ p {
         width: 90%;
     }
 }
+
+
 
 @media (max-width: 576px) {
     .navbar-nav .nav-item {
