@@ -17,17 +17,17 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-5">
                 <div class="text-center mb-4" style="margin-top: 100px;">
-                    <img src="images/backgrounds/byahe-logo.png" alt="Byahe Logo" class="img-fluid" style="max-width: 100px;">
+                    <img src="{% static 'images/backgrounds/byahe-logo.png' %}" alt="Byahe Logo" class="img-fluid" style="max-width: 100px;">
                 </div>
                 <div class="card p-4">
-                    <h1 class="h4 text-center mb-3">Email Verification</h1>
-                    <p class="text-center text-muted mb-4">Enter the verifcation code we sent to your email</p>
+                    <h1 class="h4 text-center mb-3">Password Reset Link Sent!</h1>
+                    <p class="text-center text-muted mb-4">Please check your email.</p>
                     <form action="#" method="POST">
                         <div class="mb-3">
-                            <label for="code" class="form-label">Verification Code</label>
-                            <input type="text" id="code" name="code" class="form-control" required>
+                            <span for="code" class="form-label">A password reset link has been sent to your email. Due note that it it 
+                                                                <b>expires in 10 minutes!</b>
+                            </span>
                         </div>
-                        <button type="submit" class="btn custom-btn w-100">Submit Verification Code</button>
                     </form>
                 </div>
             </div>

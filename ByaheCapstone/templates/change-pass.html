@@ -1,5 +1,5 @@
 {% load static %}
-{% extends "layout.html" %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,20 +18,22 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-5">
                 <div class="text-center mb-4" style="margin-top: 100px;">
-                    <img src="images/backgrounds/byahe-logo.png" alt="Byahe Logo" class="img-fluid" style="max-width: 100px;">
+                    <img src="{% static 'images/backgrounds/byahe-logo.png'%}" alt="Byahe Logo" class="img-fluid" style="max-width: 100px;">
                 </div>
                 <div class="card p-4">
-                    <h1 class="h4 text-center mb-3">Change Password?</h1>
+                    <h1 class="h4 text-center mb-3">Change Your Password</h1>
 
-                    {% if messages %}
-                        {% for message in messages %}
-                            {% if message.tags == 'error' %}
-                                <center><h4 style="color: firebrick;">{{message}}</h4></center>
-                            {% else %}
-                                <center><h4 style="color: dodgerblue;">{{message}}</h4></center>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <center>
+                            <h4 style="color: 
+                                {% if message.tags == 'error' %} firebrick 
+                                {% else %} dodgerblue {% endif %};">
+                                {{ message }}
+                            </h4>
+                        </center>
+                    {% endfor %}
+                {% endif %}
 
                     <p class="text-center text-muted mb-4">Enter your new password</p>
                     <form action="#" method="POST">
@@ -46,7 +48,7 @@
                             </div>
                             <div class="col-md-12 position-relative">
                                 <label for="confirm-password" class="form-label">Confirm Password</label>
-                                <input type="password" id="confirm-password" required name="confirm-password" class="form-control">
+                                <input type="password" id="confirm_password" required name="confirm_password" class="form-control">
                             </div>
                         </div>
                         <button type="submit" class="btn custom-btn w-100">Change Password</button>
