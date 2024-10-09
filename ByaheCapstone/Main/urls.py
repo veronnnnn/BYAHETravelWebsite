@@ -12,4 +12,6 @@ urlpatterns = [
     path('forgot_password/', views.ForgotPassword, name='forgot_password'),
     path('password-reset-sent/<str:reset_id>/', views.ForgotPass2, name='forgot_pass2'),
     path('change_password/<str:reset_id>/', views.ChangePassword, name='change_password'),  # Corrected
+
+    path('reservation_form/', views.ReservationFormView, name='reservation_form'),
 ]

@@ -1,0 +1,318 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.navbar-logo {
+    height: 55px; /* Control the height to fit within the navbar */
+    width: auto;  /* Maintain aspect ratio */
+    padding-left: 40px;
+    padding-right: 10px; /* Space between logo and navbar items */
+  }
+
+.navbar-brand {
+    font-size: 24px;
+    color: black !important;
+}
+
+.nav-link {
+    color: black !important;
+    font-size: large;
+    padding: 5px 10px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+    background: #004AAD;
+    color: white !important;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background: #004AAD;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: #003580;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+/* Ensure the navbar remains visible on scroll */
+.fixed-top {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.get-started-btn{
+    background: #004AAD;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+    margin-left: 25px;
+    margin-right: 40px;
+    display:inline-block;
+    font-size: large;
+}
+
+.get-started-btn:hover {
+    background: #003580; /* Optionally darken the background */
+    color: white; /* Keep text color the same */
+}
+
+.learn-more-btn {
+    background: #004AAD;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background 0.3s;
+    display:inline-block;
+}
+
+.learn-more-btn:hover {
+    background: #003580; /* Optionally darken the background */
+    color: white; /* Keep text color the same */
+}
+
+/* Hero Section */
+.reservation-hero {
+    background-image: url('/images/backgrounds/vehicle-bg.jpg'); /* Use the relevant image path */
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 1;
+  }
+  
+  .reservation-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(14, 42, 79, 0.674); /* Dark overlay to improve text readability */
+    z-index: -1;
+  }
+  
+  .reservation-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-top: 50px;
+  }
+  
+  .reservation-hero p {
+    font-size: 1.2rem;
+    margin-top: 40px;
+    margin-bottom: 0px;
+  }
+
+
+/* Styling for the reservation form */
+#reservationForm {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#gcash-upload {
+    margin-top: 20px;
+  }
+
+#receipt-preview img {
+    max-width: 200px; /* Adjust the width as necessary */
+    margin-top: 10px;
+}
+
+#map {
+    height: 300px;  /* You can adjust the size based on your design */
+    width: 100%;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+/* Style the Roundtrip checkbox and its label */
+.form-check-label {
+    font-weight: bold;
+    position: relative;
+    top: -15px;
+    left: -17px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+}
+
+#map {
+    border-radius: 5px;
+}
+
+
+/*footer*/
+.bg-primary {
+    background-color: #0052cc !important;
+    padding-right: 30px; /* Adjusts the padding on the right side */
+}
+
+.contact-info {
+    margin-left: auto; /* Pushes the content to the right */
+    padding-right: 20px; /* Adds some space from the edge */
+}
+
+h2 {
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+.list-unstyled li {
+    display: flex;
+    align-items: center;
+}
+
+.list-unstyled i {
+    margin-right: 10px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.list-inline-item a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.list-inline-item a:hover {
+    text-decoration: underline;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+
+/*responsive for reservation form*/
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .col-md-6 {
+        margin-bottom: 15px;
+    }
+
+    iframe#map {
+        height: 200px;
+    }
+
+    .btn-lg {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #reservationForm {
+      padding: 15px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    #reservationForm {
+      padding: 10px;
+    }
+  } 
+
+@media (max-width: 992px) {
+    .navbar-nav {
+        text-align: center;
+        width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 5px 0;
+    }
+
+    .get-started-btn {
+        display: block;
+        margin: 10px auto;
+        width: fit-content;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 20px;
+    }
+}
+
+
+
+/* Media Queries for Hero Section */
+@media (max-width: 768px) {
+    .reservation-hero {
+      height: 250px;
+    }
+  
+    .reservation-hero h1 {
+      font-size: 2.5rem;
+      margin-top: 40px; /* Adjusted for smaller screens */
+    }
+  
+    .reservation-hero p {
+      font-size: 1rem;
+      margin-top: 30px; /* Reduced for smaller screens */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .reservation-hero {
+      height: 200px;
+    }
+  
+    .reservation-hero h1 {
+      font-size: 2rem;
+      margin-top: 30px; /* Adjusted for mobile screens */
+    }
+  
+    .reservation-hero p {
+      font-size: 0.9rem;
+      margin-top: 20px; /* Reduced for mobile */
+    }
+  }

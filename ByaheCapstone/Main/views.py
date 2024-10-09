@@ -202,5 +202,6 @@ def ChangePassword(request, reset_id):
         return render(request, 'change-pass.html')
 
 
-
+def ReservationFormView(request):
+    return render(request, 'reservation/reservation-form.html')
 
