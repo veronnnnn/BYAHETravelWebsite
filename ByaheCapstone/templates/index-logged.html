@@ -6,7 +6,7 @@
 {% endblock title %}
 
 {% block style %}
-<link rel="stylesheet" href="{% static '/styles/styles.css' %}">
+<link rel="stylesheet" href="{% static '/styles/styles-logged.css' %}">
 {% endblock style%}
 
 {% block navbar %}
@@ -37,22 +37,28 @@
                 </li>
             
                 <li class="nav-item">
-                <!-- Existing Get Started Button -->
-                    <a href="{% url 'reservation_form' %}" class="btn get-started-btn ms-3" style="margin-right: 0.1rem;">Book Now</a>
+                    <!-- Existing Get Started Button -->
+                    <a href="{% url 'reservation_form' %}" class="btn get-started-btn ms-3 book-now-btn">Book Now</a>
                 </li>
             </ul>
-            <!-- User Icon -->
+            <!-- User Icon with Dropdown -->
             <ul class="navbar-nav ms-1 d-flex align-items-center">
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center" href="#">
+                <li class="nav-item dropdown">
+                    <a class="nav-link d-flex align-items-center dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user-circle" style="font-size: 2.3rem; margin-right: 0.5rem;"></i>
                     </a>
-                </li>
-                <!-- Logout Icon -->
-                <li class="nav-item">
-                    <a href="{% url 'logout' %}" class="nav-link d-flex align-items-center">
-                        <i class="fas fa-sign-out-alt" style="font-size: 2.3rem; color: red;"></i>
-                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn animate__faster" aria-labelledby="userDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user" style="margin-right: 0.5rem;"></i>User Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'logout' %}">
+                                <i class="fas fa-sign-out-alt" style="margin-right: 0.5rem; color: red;"></i>Log Out
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
