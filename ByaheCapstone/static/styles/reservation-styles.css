@@ -1,3 +1,82 @@
+/* LOGGED IN CHANGES */
+
+/* Ensure the navbar is responsive */
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Make the Book Now button responsive */
+.book-now-btn {
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .book-now-btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
+        margin: 0.5rem auto; /* Center the button on smaller screens */
+    }
+
+    /* Align the user icon and buttons */
+    .navbar-nav .dropdown-toggle {
+        font-size: 1.8rem;
+    }
+}
+
+/* Adjust for very small screens (mobile) */
+@media (max-width: 576px) {
+    .book-now-btn {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.8rem;
+        text-align: center;
+    }
+
+    /* Dropdown menu adjustment */
+    .dropdown-menu {
+        width: 100%; /* Full-width dropdown on mobile for better usability */
+        margin-top: 10px;
+    }
+
+    .navbar-nav .dropdown-toggle {
+        font-size: 1.5rem;
+    }
+}
+
+/* Dropdown hidden state */
+.dropdown-menu {
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px); /* Moves dropdown slightly up */
+    transition: opacity 0.4s ease, transform 0.4s ease; /* Customize timing here */
+}
+
+/* When dropdown is visible */
+.show .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0); /* Animates back to original position */
+}
+
+/* Ensure icons align well inside the dropdown */
+.dropdown-item i {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+/* General styling for larger screens */
+@media (min-width: 992px) {
+    .book-now-btn {
+        font-size: 1.2rem;
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
