@@ -7,9 +7,12 @@
 
 {% block style %}
 <link rel="stylesheet" href="{% static '/styles/styles.css' %}">
+{% include "loader.html" %}
 {% endblock style%}
 
+
 {% block navbar %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand logo" href="#">
@@ -62,7 +65,7 @@
     <div class="hero-content">
         <h1>Byahe: Smooth Travel Experiences</h1>
         <p>Explore a new way to travel with our online reservation system, secure payment options, and real-time GPS tracking.</p>
-        <a href="#" class="learn-more-btn">Learn More</a>
+        <a href="#about-us" class="learn-more-btn">Learn More</a>
     </div>
     <div class="video-container">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/q9luhiQdXLA?si=VPJ14oR5SC8j4ver" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -76,9 +79,9 @@
         <h1>Secure Online Payment System for Easy Transactions</h1>
         <p>Experience hassle-free online payments with BYAHE's secure payment system. Choose from a variety of payment options for your convenience.</p>
         <div class="button-container">
-            <a href="#" class="sign-up-btn">Sign Up</a>
+            <a href="{% url 'signup'%}" class="sign-up-btn">Sign Up</a>
             <span class="or-text">or</span>
-            <a href="#" class="log-in-btn">Log In</a>
+            <a href="{% url 'signin'%}" class="log-in-btn">Log In</a>
         </div>
     </div>
     <div class="about-image">

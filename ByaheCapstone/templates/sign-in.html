@@ -3,12 +3,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="CodeHim">
     <title>Sign In - Byahe</title>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'styles/sign-in-style.css' %}">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/css/bootstrap.min.css'>
+
+    <link rel="stylesheet" href="{% static 'styles/modals-styles.css' %}"> <!-- Update path as needed -->
+    <link rel="stylesheet" href="{% static 'styles/sign-up-styles.css' %}"> <!-- Update path as needed -->
 </head>
 <body>
     <div class="container mt-5 position-relative">
@@ -22,20 +27,8 @@
                     <h1 class="h4 text-center mb-3">Sign in</h1>
                     <p class="text-center text-muted mb-4">Sign into your personal BYAHE account</p>
 
-                    {% if messages %}
-                        {% for message in messages %}
-                            {% if messages.tags == 'error' %}
-                                <center><h4 style="color: dodgerblue;">{{message}}</h4></center>
-                            {% else %}
-                                <center><h4 style="color: red;">{{message}}</h4></center>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-
                     <form method="POST">
-
                         {% csrf_token %}
-
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" id="username" name="username" class="form-control" required>
@@ -55,8 +48,28 @@
         </div>
     </div>
 
+    <!-- Include Modals -->
+    {% include 'modals.html' %}
+
     <!-- Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/js/bootstrap.min.js'></script>
+    <script>
+        {% if messages %}
+            {% for message in messages %}
+                var modalTitle = document.getElementById('errorMessageTitle');
+                var modalBody = document.getElementById('errorMessage');
+                if ("{{ message.tags }}" == "error") {
+                    modalTitle.innerText = "Invalid Credentials!";
+                    modalBody.innerText = "{{ message }}";
+                    var errorModal = new bootstrap.Modal(document.getElementById('statusErrorsModal'));
+                    errorModal.show();
+                } else {
+                    var successModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'));
+                    successModal.show();
+                }
+            {% endfor %}
+        {% endif %}
+    </script>
 </body>
 </html>

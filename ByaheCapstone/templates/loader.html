@@ -1,0 +1,42 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'styles/loader-styles.css'%}">
+</head>
+
+<!-- Loader HTML -->
+<div id="loader" class="loader-container">
+    <div class="logo-wrapper">
+        <img src="{% static '/images/backgrounds/byahe-logo.png' %}" alt="Byahe Logo" class="loader-logo">
+    </div>
+    <div class="progress-bar-loader">
+        <div class="progress-loader"></div>
+    </div>
+</div>
+
+<!-- Inline CSS for Loader and Fade Out Animation -->
+
+<!-- JavaScript for Loader with Fade-Out -->
+<script>
+    window.addEventListener("load", function() {
+        const loader = document.getElementById("loader");
+
+        // Apply fade-out effect by adding 'loader-hidden' class
+        setTimeout(function() {
+            loader.classList.add("loader-hidden"); // Trigger fade-out
+        }, 1000); // Adjust the delay time to suit your needs
+    });
+
+    // Show loader during page navigation or link clicks
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', function(event) {
+            const loader = document.getElementById("loader");
+            loader.style.display = "flex"; // Show loader
+
+            // Optional: Delay for demonstration purposes
+            setTimeout(() => {
+                loader.classList.add("loader-hidden"); // Trigger fade-out
+            }, 1000);
+        });
+    });
+</script>
