@@ -25,66 +25,66 @@
 
 </head>
 
-    {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand logo" href="#">
-                <img src="{% static '/images/backgrounds/byahe-logo.png' %}" alt="Logo" class="navbar-logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto d-flex align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about-us">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#book-your-ride">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#vehicles-section">Vehicles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#ratings-and-reviews">Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contacts">Contact</a>
-                    </li>
-                
-                    <li class="nav-item">
-                        <!-- Existing Get Started Button -->
-                        <a href="{% url 'reservation_form' %}" class="btn get-started-btn ms-3 book-now-btn">Book Now</a>
-                    </li>
-                </ul>
-                <!-- User Icon with Dropdown -->
-                <ul class="navbar-nav ms-1 d-flex align-items-center">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link d-flex align-items-center dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user-circle" style="font-size: 2.3rem; margin-right: 0.5rem;"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn animate__faster" aria-labelledby="userDropdown">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user" style="margin-right: 0.5rem;"></i>User Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{% url 'logout' %}">
-                                    <i class="fas fa-sign-out-alt" style="margin-right: 0.5rem; color: red;"></i>Log Out
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    {% endblock navbar %}
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand logo" href="{% url 'home'%}">
+            <img src="{% static '/images/backgrounds/byahe-logo.png' %}" alt="Logo" class="navbar-logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto d-flex align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about-us">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#book-your-ride">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#vehicles-section">Vehicles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#ratings-and-reviews">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacts">Contact</a>
+                </li>
 
-    {% block hero_section %}
-    <!-- Hero Section for Reservation Form -->
-    <section class="reservation-hero" style="
+                <li class="nav-item">
+                    <!-- Existing Get Started Button -->
+                    <a href="{% url 'reservation_form' %}" class="btn get-started-btn ms-3 book-now-btn">Book Now</a>
+                </li>
+            </ul>
+            <!-- User Icon with Dropdown -->
+            <ul class="navbar-nav ms-1 d-flex align-items-center">
+                <li class="nav-item dropdown">
+                    <a class="nav-link d-flex align-items-center dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle" style="font-size: 2.3rem; margin-right: 0.5rem;"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn animate__faster" aria-labelledby="userDropdown">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user" style="margin-right: 0.5rem;"></i>User Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'logout' %}">
+                                <i class="fas fa-sign-out-alt" style="margin-right: 0.5rem; color: red;"></i>Log Out
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endblock navbar %}
+
+{% block hero_section %}
+<!-- Hero Section for Reservation Form -->
+<section class="reservation-hero" style="
     color: white;
     min-height: 50vh;
     display: flex;
@@ -99,272 +99,139 @@
     background-repeat: no-repeat;
     position: relative;
     ">
-        <div class="container text-center">
+    <div class="container text-center">
         <h1 class="display-4">Reservation Form</h1>
         <p class="lead">Fill up your reservation form to get your travel started.</p>
-        </div>
-    </section>
-    {% endblock hero_section %}
+    </div>
+</section>
+{% endblock hero_section %}
 
-    {% block reservation_form %}
-    <div class="container my-5">
-        <div class="card shadow-lg p-4">
-            <div class="card-body">
-                <h2 class="card-title text-center mb-4">Byahe Reservation Form</h2>
-    
-                <form id="reservationForm">
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="fullName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="fullName" placeholder="Enter full name">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="contactNumber" class="form-label">Contact Number</label>
-                            <input type="text" class="form-control" id="contactNumber" placeholder="Enter contact number">
-                        </div>
+{% block reservation_form %}
+<div class="container my-5">
+    <div class="card shadow-lg p-4">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Byahe Reservation Form</h2>
+
+            <form method="POST" enctype="multipart/form-data" id="reservationForm">
+                {% csrf_token %}
+                {{forms.as_p}}
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter full name" required>
                     </div>
-    
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="pickupDate" class="form-label">Pickup Date (mm/dd/yyyy)</label>
-                            <input type="date" class="form-control" id="pickupDate">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="dropoffDate" class="form-label">Dropoff Date (mm/dd/yyyy)</label>
-                            <input type="date" class="form-control" id="dropoffDate">
-                        </div>
+                    <div class="col-md-6">
+                        <label for="contactNumber" class="form-label">Contact Number</label>
+                        <input type="text" class="form-control" id="contactNumber" placeholder="Enter contact number" required>
                     </div>
-    
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="pickupTime" class="form-label">Pickup Time</label>
-                            <input type="time" class="form-control" id="pickupTime">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="dropoffTime" class="form-label">Dropoff Time</label>
-                            <input type="time" class="form-control" id="dropoffTime">
-                        </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="pickupDate" class="form-label">Pickup Date (mm/dd/yyyy)</label>
+                        <input type="date" class="form-control" id="pickupDate" required>
                     </div>
-    
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="pickupLocation" class="form-label">Pickup Location (Starting Point)</label>
-                            <input type="text" class="form-control" id="pickupLocation" placeholder="Enter starting point">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="dropoffLocation" class="form-label">Dropoff Location (End Point)</label>
-                            <input type="text" class="form-control" id="dropoffLocation" placeholder="Enter end point">
-                        </div>
+                    <div class="col-md-6">
+                        <label for="dropoffDate" class="form-label">Dropoff Date (mm/dd/yyyy)</label>
+                        <input type="date" class="form-control" id="dropoffDate" required>
                     </div>
-    
-                    <!-- Google Maps -->
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <div id="map" style="height: 300px; width: 100%;"></div>
-                        </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="pickupTime" class="form-label">Pickup Time</label>
+                        <input type="time" class="form-control" id="pickupTime" required>
                     </div>
-    
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="vehicle" class="form-label">Vehicle</label>
-                            <select class="form-control" id="vehicle">
-                                <option value="">Select a vehicle</option>
-                                <option value="Toyota Corolla">Toyota Corolla</option>
-                                <option value="Modernized PUV V1">Modernized PUV V1</option>
-                                <option value="Modernized PUV V2">Modernized PUV V2</option>
-                            </select>
-                        </div>
-                        
-                        <div class="col-md-6">
-                            <label for="paymentMethod" class="form-label">Select Payment Method</label>
-                            <select class="form-control" id="paymentMethod">
-                                <option value="">Select Payment Method</option>
-                                <option value="gcash">GCash</option>
-                                <option value="cash">On-hand Payment (CASH)</option>
-                            </select>
-                        </div>
+                    <div class="col-md-6">
+                        <label for="dropoffTime" class="form-label">Dropoff Time</label>
+                        <input type="time" class="form-control" id="dropoffTime" required>
                     </div>
-    
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="totalFare" class="form-label">Total Fare</label>
-                            <input class="form-control" type="text" id="totalFare" placeholder="" readonly>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-check mt-4">
-                                <input class="form-check-input" type="checkbox" id="roundtrip">
-                                <label class="form-check-label" for="roundtrip">Roundtrip</label>
-                            </div>
-                        </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="pickupLocation" class="form-label">Pickup Location (Starting Point)</label>
+                        <input type="text" class="form-control" id="pickupLocation" placeholder="Enter starting point" required>
                     </div>
-    
-                    <!-- File Upload Section (Hidden by Default) -->
-                    <div class="mb-3" id="gcashSection" style="display: none;">
-                        <label for="gcashReceipt" class="form-label">Upload GCash receipt</label>
-                        <input type="file" class="form-control" id="gcashReceipt" accept="image/*" onchange="previewGcashReceipt(event)">
-    
-                        <div class="position-relative mt-3">
-                            <img id="gcashPreview" src="#" alt="GCash Receipt Preview" class="img-fluid" style="display: none; max-width: 100%; height: auto;">
-                            <button type="button" id="removePhoto" class="btn btn-danger position-absolute" aria-label="Remove" style="border-radius: 10px; height: 30px; width: 50px; top: 5px; right: 5px; display: none; padding: 5px;" onclick="removeGcashReceipt()">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-    
-                        <p>Please upload your GCash payment receipt (Image file only).</p>
+                    <div class="col-md-6">
+                        <label for="dropoffLocation" class="form-label">Dropoff Location (End Point)</label>
+                        <input type="text" class="form-control" id="dropoffLocation" placeholder="Enter end point" required>
                     </div>
-    
-                    <button type="submit" class="btn btn-primary">Submit Reservation Form</button>
-                </form>
-            </div>
+                </div>
+
+                <!-- Google Maps -->
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div id="map" style="height: 300px; width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="vehicle" class="form-label">Vehicle</label>
+                        <select class="form-control" id="vehicle" required>
+                            <option value="">Select a vehicle</option>
+                            <option value="Toyota Corolla">Class A - Toyota Corolla - 6 Seats</option>
+                            <option value="Modernized PUV V1">Class B - Modernized PUV V1 - 15 Seats</option>
+                            <option value="Modernized PUV V2">Class B -  Modernized PUV V2 - 15 Seats</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label for="paymentMethod" class="form-label">Select Payment Method</label>
+                        <select class="form-control" id="paymentMethod" required>
+                            <option value="">Select Payment Method</option>
+                            <option value="gcash">GCash</option>
+                            <option value="cash">On-hand Payment (CASH)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Reserve Now</button>
+                </div>
+            </form>
         </div>
     </div>
-    
-    <!-- Google Maps API Script -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-    <script>
-        let map;
-        let geocoder;
-        let markerPickup, markerDropoff;
-    
-        function initMap() {
-            // Initialize map, centered on default location
-            map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 14.599512, lng: 120.984222 }, // Default to Manila, Philippines
-                zoom: 10,
-            });
-            geocoder = new google.maps.Geocoder();
-    
-            // Trigger geocoding when location input changes
-            document.getElementById('pickupLocation').addEventListener('change', geocodePickup);
-            document.getElementById('dropoffLocation').addEventListener('change', geocodeDropoff);
-        }
-    
-        // Geocode pickup location
-        function geocodePickup() {
-            const address = document.getElementById('pickupLocation').value;
-            geocoder.geocode({ 'address': address }, function (results, status) {
-                if (status === 'OK') {
-                    if (markerPickup) markerPickup.setMap(null); // Remove previous marker
-                    map.setCenter(results[0].geometry.location);
-                    markerPickup = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location,
-                        label: 'P'
-                    });
-                } else {
-                    alert('Pickup location not found: ' + status);
-                }
-            });
-        }
-    
-        // Geocode dropoff location
-        function geocodeDropoff() {
-            const address = document.getElementById('dropoffLocation').value;
-            geocoder.geocode({ 'address': address }, function (results, status) {
-                if (status === 'OK') {
-                    if (markerDropoff) markerDropoff.setMap(null); // Remove previous marker
-                    markerDropoff = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location,
-                        label: 'D'
-                    });
-                } else {
-                    alert('Dropoff location not found: ' + status);
-                }
-            });
-        }
-    </script>
-    
-    <script>
-        document.getElementById('paymentMethod').addEventListener('change', function () {
-            const paymentMethod = this.value;
-            const gcashSection = document.getElementById('gcashSection');
-    
-            // Show the GCash section if GCash is selected, hide otherwise
-            if (paymentMethod === 'gcash') {
-                gcashSection.style.display = 'block';
-            } else {
-                gcashSection.style.display = 'none';
-                removeGcashReceipt(); // Clear the receipt if hidden
+</div>
+{% endblock reservation_form %}
+
+{% block footer %}
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <span>&copy; 2024 Byahe Online Travel Reservation. All Rights Reserved.</span>
+    </div>
+</footer>
+{% endblock footer %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5+3I4kqj6l0/4eQl56Cvxa5bJRFp3K8CzkY8W1O" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-Oz6No2G9MzLqzKZcTXKdjv9h4TIW4M8a0Z4EHTHFLRe8xgEqZ9R/jZX+5b10Xg==" crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+<script>
+    function initMap() {
+        var pickupLocation = { lat: 14.5995, lng: 120.9842 }; // Default location
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: pickupLocation
+        });
+
+        var marker = new google.maps.Marker({
+            position: pickupLocation,
+            map: map,
+            title: 'Pickup Location'
+        });
+
+        var input = document.getElementById('pickupLocation');
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            var place = autocomplete.getPlace();
+            if (place.geometry) {
+                map.setCenter(place.geometry.location);
+                marker.setPosition(place.geometry.location);
             }
         });
-    
-        function previewGcashReceipt(event) {
-            const file = event.target.files[0];
-            const preview = document.getElementById('gcashPreview');
-            const removeButton = document.getElementById('removePhoto');
-    
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block';
-                    removeButton.style.display = 'block';
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-    
-        function removeGcashReceipt() {
-            document.getElementById('gcashReceipt').value = ''; // Clears the file input
-            document.getElementById('gcashPreview').style.display = 'none'; // Hides the image preview
-            document.getElementById('removePhoto').style.display = 'none'; // Hides the remove button
-        }
-    </script>
-    {% endblock reservation_form %}
-
-    <footer id="contacts">
-        <div class="container-fluid bg-primary text-white py-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2>Contact Us</h2>
-                        <p>Have any questions or need assistance? Contact us today!</p>
-                    </div>
-                    <div class="col-md-6 contact-info">
-                        <ul class="list-unstyled">
-                            <li class="mb-2">
-                                <i class="fas fa-envelope mr-2"></i>
-                                <a href="mailto:lucbangenesis@yahoo.com" class="text-white">lucbangenesis@yahoo.com</a>
-                            </li>
-                            <li class="mb-2">
-                                <i class="fas fa-phone mr-2"></i>
-                                <span>0913 123 1234</span>
-                            </li>
-                            <li class="mb-2">
-                                <i class="fas fa-phone mr-2"></i>
-                                <span>042 - 1234 - 123</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-map-marker-alt mr-2"></i>
-                                <span>Gulang-Gulang, Lucena City, Quezon Province, Philippines</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="container py-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>BYAHE</h5>
-                </div>
-                <div class="col-md-6 text-right">
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#">Home</a></li>
-                        <li class="list-inline-item"><a href="#about-us">About</a></li>
-                        <li class="list-inline-item"><a href="#vehicles-section">Vehicles</a></li>
-                        <li class="list-inline-item"><a href="#reivews-and-ratings">Reviews</a></li>
-                        <li class="list-inline-item"><a href="#book-your-ride">Services</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
+    }
+</script>
 
 </html>

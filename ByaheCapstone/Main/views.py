@@ -11,6 +11,7 @@ from .models import *
 from .models import Profile
 from django.core.mail import send_mail
 from django.http import HttpResponse
+from .forms import ReservationForm
 
 
 def Home(request):
@@ -201,7 +202,24 @@ def ChangePassword(request, reset_id):
 
         return render(request, 'change-pass.html')
 
+#reservation form view
+def reservation_form_view(request):
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            print("form valid")
+            # Save the form data to the database
+            form.save()
+            # Redirect to a success page
+            return redirect('reservation_success')
+        else:
+            print("Reservation Form is not valid!")
+            return render(request, 'reservation/reservation-form.html', {'form': form})
+    else:   
+        form = ReservationForm()
+        return render(request, 'reservation/reservation-form.html', {'form': form})
 
-def ReservationFormView(request):
-    return render(request, 'reservation/reservation-form.html')
+def ReservationSuccessView(request):
+
+    return render(request, 'reservation/reservation-success.html')
 
