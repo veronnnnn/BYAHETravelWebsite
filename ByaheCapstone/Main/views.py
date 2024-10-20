@@ -24,6 +24,24 @@ def LogOutView(request):
     logout(request)
     return redirect('signin')
 
+def TaxiView1(request):
+    return render(request, 'vehicles/taxi1.html')
+
+def TaxiView2(request):
+    return render(request, 'vehicles/taxi2.html')
+
+def TaxiView3(request):
+    return render(request, 'vehicles/taxi3.html')
+
+def MiniBusView1(request):
+    return render(request, 'vehicles/minibus1.html')
+
+def MiniBusView2(request):
+    return render(request, 'vehicles/minibus2.html')
+
+def MiniBusView3(request):
+    return render(request, 'vehicles/minibus3.html')
+
 def SignUpView(request):
 
     if request.method == "POST":
@@ -101,7 +119,7 @@ def SignInView(request):
     return render(request, 'sign-in.html')
     
 
-
+@login_required
 def ForgotPassword(request):
 
     if request.method == "POST":
@@ -141,6 +159,7 @@ def ForgotPassword(request):
 
     return render(request, 'forgot-password.html')
 
+@login_required
 def ForgotPass2(request, reset_id): #password reset sent view
 
     if PasswordReset.objects.filter(reset_id=reset_id).exists():
@@ -152,6 +171,7 @@ def ForgotPass2(request, reset_id): #password reset sent view
 
     return render(request, 'forgot-password2.html')
 
+@login_required
 def ChangePassword(request, reset_id):
     
     try:
@@ -203,6 +223,7 @@ def ChangePassword(request, reset_id):
         return render(request, 'change-pass.html')
 
 #reservation form view
+@login_required
 def reservation_form_view(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
@@ -219,6 +240,7 @@ def reservation_form_view(request):
         form = ReservationForm()
         return render(request, 'reservation/reservation-form.html', {'form': form})
 
+@login_required
 def ReservationSuccessView(request):
 
     return render(request, 'reservation/reservation-success.html')

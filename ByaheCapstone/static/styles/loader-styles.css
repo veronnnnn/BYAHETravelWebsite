@@ -29,7 +29,7 @@
 
     .loader-logo {
         width: 150px;
-        animation: slide 2s ease-in-out infinite;
+        animation: slide 5s ease-in-out; /* Changed from 2.5s to 5s */
     }
 
     .progress-bar-loader {
@@ -52,7 +52,7 @@
 
     @keyframes slide {
         0% { transform: translateX(-100%); }
-        50% { transform: translateX(0); }
+        50% { transform: translateX(0); } /* Stopping at center */
         100% { transform: translateX(100%); }
     }
 

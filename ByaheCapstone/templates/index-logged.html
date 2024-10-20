@@ -40,7 +40,7 @@
             
                 <li class="nav-item">
                     <!-- Existing Get Started Button -->
-                    <a href="{% url 'reservation_form' %}" class="btn get-started-btn ms-3 book-now-btn">Book Now</a>
+                    <a href="{% url 'reservation_form_view' %}" class="btn get-started-btn ms-3 book-now-btn">Book Now</a>
                 </li>
             </ul>
             <!-- User Icon with Dropdown -->
@@ -90,7 +90,16 @@
         <a href="#" class="learn-more-btn">Learn More</a>
     </div>
     <div class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/q9luhiQdXLA?si=VPJ14oR5SC8j4ver" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/q9luhiQdXLA?autoplay=1&mute=1" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
     </div>
 </section>
 {% endblock hero_section %}

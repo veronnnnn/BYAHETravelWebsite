@@ -1,0 +1,168 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Vehicle Details - Byahe</title>
+    {% endblock title %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    {% block style %}
+    <link rel="stylesheet" href="{% static '/styles/vehicles/vehicle-details-style.css' %}">
+    {% endblock style %}
+</head>
+
+<body>
+    {% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand logo" href="#">
+                <img src="{% static '/images/backgrounds/byahe-logo.png' %}" alt="Logo" class="navbar-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto d-flex align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-us">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#book-your-ride">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#vehicles-section">Vehicles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ratings-and-reviews">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">Contact</a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <!-- Existing Get Started Button -->
+                        <a href="{% url 'reservation_form_view' %}" class="btn get-started-btn ms-3 book-now-btn">Book Now</a>
+                    </li>
+                </ul>
+                <!-- User Icon with Dropdown -->
+                <ul class="navbar-nav ms-1 d-flex align-items-center">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link d-flex align-items-center dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle" style="font-size: 2.3rem; margin-right: 0.5rem;"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end animate__animated animate__fadeIn animate__faster" aria-labelledby="userDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user" style="margin-right: 0.5rem;"></i>User Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{% url 'logout' %}">
+                                    <i class="fas fa-sign-out-alt" style="margin-right: 0.5rem; color: red;"></i>Log Out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endblock navbar %}
+
+    <!-- Hero Section -->
+    <section id="vehicle-details-hero" class="text-center text-white">
+        <div class="overlay">
+            <h1 class="display-4">Vehicle Details</h1>
+            <p>View our vehicles details for a more personalized travel experience.</p>
+        </div>
+    </section>
+
+    <section id="vehicle-features" class="container">
+        <h2>Vehicle Features and Details</h2>
+        <p>Get an overview of what our vehicles offer.</p>
+    </section>
+
+    <!-- Vehicle Details Section -->
+    <section id="vehicle-details" class="container my-5">
+        <div class="row vehicle-info">
+            <div class="col-lg-6">
+                <img src="/images/vehicles/taxi-1.jpg" alt="Toyota Vios 1" class="img-fluid">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="vehicle-title">Toyota Vios 1</h2>
+                <p class="vehicle-description">Toyota Vios 1 is a reliable and fuel-efficient vehicle, perfect for city rides. It comes with modern amenities and safety features to ensure a comfortable and safe journey.</p>
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item"><strong>Class:</strong> A</li>
+                    <li class="list-group-item"><strong>Capacity:</strong> 4 passengers</li>
+                    <li class="list-group-item"><strong>Features:</strong> Air conditioning, GPS, Bluetooth connectivity</li>
+                </ul>
+                <a href="reservation.html" class="btn btn-primary">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacts">
+        <div class="container-fluid bg-primary text-white py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Contact Us</h2>
+                        <p>Have any questions or need assistance? Contact us today!</p>
+                    </div>
+                    <div class="col-md-6 contact-info">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-envelope mr-2"></i>
+                                <a href="mailto:lucbangenesis@yahoo.com" class="text-white">lucbangenesis@yahoo.com</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-phone mr-2"></i>
+                                <span>0913 123 1234</span>
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-phone mr-2"></i>
+                                <span>042 - 1234 - 123</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                <span>Gulang-Gulang, Lucena City, Quezon Province, Philippines</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>BYAHE</h5>
+                </div>
+                <div class="col-md-6 text-right">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#">Home</a></li>
+                        <li class="list-inline-item"><a href="#about-us">About</a></li>
+                        <li class="list-inline-item"><a href="#vehicles-section">Vehicles</a></li>
+                        <li class="list-inline-item"><a href="#reivews-and-ratings">Reviews</a></li>
+                        <li class="list-inline-item"><a href="#book-your-ride">Services</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+

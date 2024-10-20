@@ -1,0 +1,393 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin-top: 80px; /* To account for the fixed navbar */
+}
+
+/* Navbar Styles */
+.navbar-logo {
+    height: 55px;
+    width: auto;
+    padding-left: 40px;
+    padding-right: 10px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    color: #b05050 !important;
+}
+
+.nav-link {
+    color: black !important;
+    font-size: large;
+    padding: 5px 10px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+    background: #004AAD;
+    color: white !important;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background: #004AAD;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background: #003580;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+.fixed-top {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.get-started-btn {
+    background: #004AAD;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+    margin-left: 25px;
+    margin-right: 40px;
+    display: inline-block;
+    font-size: large;
+}
+
+.get-started-btn:hover {
+    background: #003580;
+    color: white;
+}
+
+/* Hero Section Base Styles */
+#vehicle-details-hero {
+    background: url('/images/backgrounds/vehicle-bg.jpg') no-repeat center center/cover;
+    height: 25vh; /* Reduced base height */
+    position: relative;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#vehicle-details-hero .overlay {
+    background: rgba(16, 38, 63, 0.555); 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+}
+
+#vehicle-details-hero h1 {
+    font-size: 2em; /* Adjusted for smaller screen size */
+    margin-bottom: 0.5rem;
+}
+
+#vehicle-details-hero p {
+    font-size: 1rem; /* Adjusted for smaller screen size */
+}
+
+/* General Styles for Vehicle Features Section */
+#vehicle-features {
+    margin-top: 10px;
+    margin: 25px 0; /* Adds space above and below the section */
+    padding-left: 15px; /* Default padding for small screens */
+    padding-right: 15px; /* Default padding for small screens */
+}
+
+#vehicle-features h2 {
+    color: black;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#vehicle-features p {
+    font-size: 0.75rem;
+    color: #6c757d; /* Light grey color */
+}
+
+/* Vehicle Info Section */
+.vehicle-info {
+    border: 1px solid #ddd; /* Adds a light gray border */
+    border-radius: 8px; /* Rounds the corners slightly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    padding: 25px; /* Adds padding inside the border */
+    padding-top: 35px;
+    padding-bottom: 25;
+    margin-bottom: 30px; /* Adds some margin below the section */
+    background-color: #fff; /* Ensures the background is white */
+}
+
+/* Vehicle Details Section */
+#vehicle-details {
+    margin-top: 100px;
+    padding: 40px 0;
+}
+
+.vehicle-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.vehicle-description {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.list-group-item {
+    font-size: 1rem;
+    padding: 15px 20px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Footer Styles */
+/*footer*/
+.bg-primary {
+    background-color: #0052cc !important;
+    padding-right: 30px; /* Adjusts the padding on the right side */
+}
+
+.contact-info {
+    margin-left: auto; /* Pushes the content to the right */
+    padding-right: 20px; /* Adds some space from the edge */
+}
+
+h2 {
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+.list-unstyled li {
+    display: flex;
+    align-items: center;
+}
+
+.list-unstyled i {
+    margin-right: 10px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.list-inline-item a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.list-inline-item a:hover {
+    text-decoration: underline;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+/* Media Queries */
+
+/* Medium Devices (Tablets, 768px and up) */
+@media (max-width: 991.98px) {
+    .get-started-btn {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+}
+
+/* Small Devices (Landscape Phones, 576px and up) */
+@media (max-width: 767.98px) {
+    .navbar-logo {
+        height: 45px;
+        padding-left: 20px;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        padding: 5px;
+    }
+
+    .get-started-btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    #vehicle-details {
+        padding: 20px 0;
+    }
+
+    .vehicle-title {
+        font-size: 1.8rem;
+    }
+
+    .vehicle-description {
+        font-size: 1rem;
+    }
+
+    .list-group-item {
+        font-size: 0.95rem;
+        padding: 10px 15px;
+    }
+
+    .contact-info ul li {
+        font-size: 0.95rem;
+    }
+
+    .footer-links {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .footer-links ul li {
+        display: block;
+        margin: 5px 0;
+    }
+}
+
+/* Extra Small Devices (Portrait Phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .navbar-logo {
+        height: 40px;
+        padding-left: 10px;
+    }
+
+    .vehicle-title {
+        font-size: 1.5rem;
+    }
+
+    .vehicle-description {
+        font-size: 0.95rem;
+    }
+
+    .list-group-item {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .contact-info ul li {
+        font-size: 0.9rem;
+    }
+
+    .contact-info {
+        margin-top: 20px;
+    }
+}
+
+/* Media Queries for Larger Devices */
+
+/* Medium Devices (Tablets, 768px and up) */
+@media (min-width: 768px) {
+    #vehicle-details-hero {
+        height: 45vh; /* Increased height for tablets */
+    }
+
+    #vehicle-details-hero h1 {
+        font-size: 3.5rem;
+    }
+
+    #vehicle-details-hero p {
+        font-size: 1.4rem;
+    }
+}
+
+/* Large Devices (Desktops, 992px and up) */
+@media (min-width: 992px) {
+    #vehicle-details-hero {
+        height: 55vh; /* Further increase height for desktops */
+    }
+
+    #vehicle-details-hero h1 {
+        font-size: 4.5rem;
+    }
+
+    #vehicle-details-hero p {
+        font-size: 1.6rem;
+    }
+}
+
+/* Extra Large Devices (1200px and up) */
+@media (min-width: 1200px) {
+    #vehicle-details-hero {
+        height: 65vh; /* Final increase for very large screens */
+    }
+
+    #vehicle-details-hero h1 {
+        font-size: 5rem;
+    }
+
+    #vehicle-details-hero p {
+        font-size: 1.75rem;
+    }
+}
+
+/* Media Queries */
+@media (max-width: 767.98px) {
+    .vehicle-info {
+        padding: 15px; /* Reduces padding for smaller screens */
+        margin-bottom: 20px; /* Reduces margin for smaller screens */
+    }
+}
+
+@media (max-width: 575.98px) {
+    .vehicle-info {
+        padding: 10px; /* Further reduces padding for extra small screens */
+        margin-bottom: 15px; /* Further reduces margin for extra small screens */
+    }
+}
+
+/* Media Queries for Larger Devices */
+
+/* Medium Devices (Tablets, 768px and up) */
+@media (min-width: 768px) {
+    #vehicle-features {
+        padding-left: 55px; /* Increased padding for tablets and larger devices */
+        padding-right: 55px; /* Increased padding for tablets and larger devices */
+    }
+
+    #vehicle-features h2 {
+        font-size: 2.5rem; /* Slightly larger font size for tablets */
+    }
+
+    #vehicle-features p {
+        font-size: 1.3rem; /* Slightly larger font size for tablets */
+    }
+}
+
+/* Large Devices (Desktops, 992px and up) */
+@media (min-width: 992px) {
+    #vehicle-features {
+        padding-left: 80px; /* Further increased padding for desktops */
+        padding-right: 80px; /* Further increased padding for desktops */
+    }
+
+    #vehicle-features h2 {
+        font-size: 3rem; /* Larger font size for desktops */
+    }
+
+    #vehicle-features p {
+        font-size: 1.4rem; /* Larger font size for desktops */
+    }
+}

@@ -431,6 +431,11 @@ section {
     font-size: 1.5em;
     color: #000000;
 }
+
+/* announcement section */
+
+
+
 /*ratings and reviews*/
 .ratings-hero {
     background-image: url('/images/backgrounds/ratingss.jpg'); /* Replace with actual path */
