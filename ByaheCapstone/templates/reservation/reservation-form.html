@@ -117,11 +117,11 @@
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="fullName" class="form-label">Full Name</label>
-                        <input type="text" class="form-control" id="fullName" name="full_name" placeholder="Enter full name">
+                        <input type="text" class="form-control" id="fullName" name="full_name" placeholder="Enter full name" value={{ request.user.full_name }}>
                     </div>
                     <div class="col-md-6">
                         <label for="contactNumber" class="form-label">Contact Number</label>
-                        <input type="text" class="form-control" id="contactNumber" name = "contact_number" placeholder="Enter contact number">
+                        <input type="text" class="form-control" id="contactNumber" name = "contact_number" placeholder="Enter contact number" value={{ request.user.contact_number }}>
                     </div>
                 </div>
 
@@ -151,19 +151,19 @@
                     <div class="col-md-6">
                         <label for="pickupLocation" class="form-label">Pickup Location</label>
                         <select class="form control" id="pickupLocation" name = "pickup_location" placeholder="Enter starting point" style = "margin-left: 10px;">
-                            <option value="">Select your starting point</option>
-                            <option value="Toyota Corolla">Lucena Grand Terminal</option>
-                            <option value="Modernized PUV V1">Groto Lucban Quezon</option>
-                            <option value="Modernized PUV V2">Tayabas Quezon</option>
+                            <option value="" disabled selected>Select your starting point</option>
+                            <option value="lucena_grand_terminal_pick" {% if form.pickup_location.value == "lucena_grand_terminal_pick" %} selected {% endif %}>Lucena Grand Terminal</option>
+                            <option value="groto_lucban_quezon_pick" {% if form.pickup_location.value == "groto_lucban_quezon_pick" %} selected {% endif %}>Groto Lucban Quezon</option>
+                            <option value="tayabas_city_quezon_pick " {% if form.pickup_location.value == "tayabas_city_quezon_pick" %} selected {% endif %}>Tayabas City Quezon</option>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="dropoffLocation" class="form-label">Dropoff Location</label>
                         <select class="form control" id="dropoffLocation" name = "dropoff_location" placeholder="Enter end point" style = "margin-left: 10px;">
-                            <option value="">Select your destination</option>
-                            <option value="Toyota Corolla">Lucena Grand Terminal</option>
-                            <option value="Modernized PUV V1">Groto Lucban Quezon</option>
-                            <option value="Modernized PUV V2">Tayabas Quezon</option>
+                            <option value="" disabled selected>Select your destination</option>
+                            <option value="lucena_grand_terminal_drop" {% if form.dropoff_location.value == "lucena_grand_terminal_drop" %} selected {% endif %}>Lucena Grand Terminal</option>
+                            <option value="groto_lucban_quezon_drop" {% if form.dropoff_location.value == "groto_lucban_quezon_drop" %} selected {% endif %}>Groto Lucban Quezon</option>
+                            <option value="tayabas_city_quezon_drop" {% if form.dropoff_location.value == "tayabas_city_quezon_drop" %} selected {% endif %}>Tayabas City Quezon</option>
                         </select>
                     </div>
                 </div>
@@ -199,7 +199,7 @@
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="totalFare" class="form-label">Total Fare</label>
-                        <input class="form-control" type="text" id="totalFare" name = "total_fare" placeholder="" readonly>
+                        <input class="form-control" type="text" id="totalFare" name = "total_fare" placeholder="">
                     </div>
                     <div class="col-md-6">
                         <div class="form-check mt-4">

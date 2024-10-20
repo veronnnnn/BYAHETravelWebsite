@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -226,22 +226,27 @@ def ChangePassword(request, reset_id):
 @login_required
 def reservation_form_view(request):
     if request.method == 'POST':
-        form = ReservationForm(request.POST)
+        form = ReservationForm(request.POST, request.FILES)
         if form.is_valid():
+            reservation = form.save(commit=False)
+            reservation.user = request.user
+            reservation.save()
             print("form valid")
             # Save the form data to the database
-            form.save()
+            # form.save()
             # Redirect to a success page
-            return redirect('reservation_success')
+            return redirect('reservation_success', reservation_id=reservation.id)
         else:
             print("Reservation Form is not valid!")
+            print(form.errors)  # Print the form errors to see what's wrong
             return render(request, 'reservation/reservation-form.html', {'form': form})
     else:   
         form = ReservationForm()
         return render(request, 'reservation/reservation-form.html', {'form': form})
 
 @login_required
-def ReservationSuccessView(request):
+def ReservationSuccessView(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id)
 
-    return render(request, 'reservation/reservation-success.html')
+    return render(request, 'reservation/reservation-success.html', {'reservation': reservation})
 

@@ -8,6 +8,10 @@ class Profile(models.Model):
     contact_number = models.CharField(max_length=15)
     address = models.TextField()
 
+    @property
+    def full_name(self):
+        return f"{self.user.first_name} {self.user.last_name or ''}"
+
     def __str__(self):
         return self.user.username
 
@@ -27,14 +31,30 @@ class Reservation(models.Model):
     contact_number = models.CharField(max_length=15)
     
     # Date and Time Fields
-    pickup_date = models.DateField()
-    dropoff_date = models.DateField()
-    pickup_time = models.TimeField()
-    dropoff_time = models.TimeField()
+    pickup_date = models.DateField(null=True, blank=True)
+    dropoff_date = models.DateField(null=True, blank=True)
+    pickup_time = models.TimeField(null=True, blank=True)
+    dropoff_time = models.TimeField(null=True, blank=True)
+
+    PICKUP_LOCATION_CHOICES = [
+        ('lucena_grand_terminal_pick', 'Lucena Grand Terminal'),
+        ('groto_lucban_quezon_pick', 'Groto Lucban Quezon'),
+        ('tayabas_city_quezon_pick', 'Tayabas City Quezon'),
+    ]
     
+    DROPOFF_LOCATION_CHOICES = [
+        ('lucena_grand_terminal_drop', 'Lucena Grand Terminal'),
+        ('groto_lucban_quezon_drop', 'Groto Lucban Quezon'),
+        ('tayabas_city_quezon_drop', 'Tayabas City Quezon'),
+    ]
+
     # Location Fields
-    pickup_location = models.CharField(max_length=255)
-    dropoff_location = models.CharField(max_length=255)
+    pickup_location = models.CharField(max_length=255, choices= PICKUP_LOCATION_CHOICES)
+    dropoff_location = models.CharField(max_length=255, choices= DROPOFF_LOCATION_CHOICES)
+
+    #     # Location Fields
+    # pickup_location = models.CharField(max_length=255)
+    # dropoff_location = models.CharField(max_length=255)
     
     # Vehicle and Payment
     vehicle = models.CharField(max_length=100, choices=[

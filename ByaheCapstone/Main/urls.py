@@ -25,5 +25,5 @@ urlpatterns = [
     path('reservation/', views.reservation_form_view, name='reservation_form_view'),
 
     #reservation success
-    path('reservation/success/', views.ReservationSuccessView, name='reservation_success'),
+    path('reservation/success/<int:reservation_id>/', views.ReservationSuccessView, name='reservation_success'),
 ]
