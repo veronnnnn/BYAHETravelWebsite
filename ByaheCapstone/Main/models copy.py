@@ -78,35 +78,3 @@ class Reservation(models.Model):
     def __str__(self):
         return f"Reservation by {self.full_name} ({self.pickup_date})"
     
-    def calculate_fare(self):
-        # Define kilometers for each route
-        distance_map = {
-            ('lucban_terminal', 'lucena_grand_terminal'): 23.2,
-            ('lucban_terminal', 'tayabas_city_public_market'): 12.9,
-            ('tayabas_city_public_market', 'lucena_grand_terminal'): 9.2,
-        }
-
-        # Get distance for the selected route
-        distance = distance_map.get(
-            (self.pickup_location.split('_pick')[0], self.dropoff_location.split('_drop')[0]),
-            0
-        )
-        
-        # Compute fare per kilometer
-        fare_per_km = 17 / 4  # 17 pesos per 4 kilometers
-        base_fare = distance * fare_per_km
-        
-        # Get seat count based on the vehicle
-        seat_map = {
-            'Toyota Corolla': 6,
-            'Modernized PUV V1': 15,
-            'Modernized PUV V2': 15,
-        }
-        seat_count = seat_map.get(self.vehicle, 0)
-        
-        # Calculate total fare
-        total_fare = base_fare * seat_count
-        if self.roundtrip:
-            total_fare *= 2  # Double the fare for roundtrip
-        
-        return round(total_fare, 2)

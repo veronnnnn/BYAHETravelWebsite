@@ -4,12 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.Home, name='home'),
 
-    path('admin_dashboard/', views.admin_dashboard, name='admin_dashboard'),
-    path('admin_users/', views.admin_users, name='admin_users'),
-    path('delete-user/<int:user_id>/', views.delete_user, name='delete_user'), #DELETE USER
-    
-
-
     path('signup/', views.SignUpView, name='signup'),
     path('login/', views.SignInView, name='signin'),
     path('logged_in/', views.LoggedInView, name='logged_in'),
@@ -29,9 +23,6 @@ urlpatterns = [
 
     # Reservation form page
     path('reservation/', views.reservation_form_view, name='reservation_form_view'),
-    #reservation calculate fare
-    path('calculate-fare/', views.CalculateFareView, name='calculate_fare'),
-
 
     #reservation success
     path('reservation/success/<int:reservation_id>/', views.ReservationSuccessView, name='reservation_success'),

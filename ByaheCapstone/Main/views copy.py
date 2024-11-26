@@ -8,49 +8,14 @@ from django.core.mail import EmailMessage
 from django.utils import timezone
 from django.urls import reverse
 from .models import *
-from .models import Profile, Reservation
+from .models import Profile
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from .forms import ReservationForm
-from django.http import JsonResponse
 
 
-#HOMEPAGE
 def Home(request):
     return render(request, 'index.html')
-#ADMIN DASHBOARD
-@login_required
-def admin_dashboard(request):
-    # Fetch data from the database
-    users = User.objects.all()
-    reservations = Reservation.objects.all()
-
-    return render(request, 'admin/admin_index.html', {
-        'users': users,
-        'reservations': reservations,
-    })
-
-#ADMIN user profiles
-@login_required
-def admin_users(request):
-    # Fetch data from the database
-    
-    users = User.objects.all()
-
-    return render(request, 'admin/users.html', {
-        'users': users,
-    })
-
-#ADMIN delete user
-def delete_user(request, user_id):
-    user = get_object_or_404(User, id=user_id)
-    if request.method == "POST":
-        user.delete()
-        messages.success(request, "User deleted successfully.")
-        return redirect('admin_users')  # Replace with the name of the URL pattern for the user profiles page
-    return render(request, 'delete_user_confirmation.html', {'user': user})
-
-
 @login_required
 def LoggedInView(request):
     return render(request, 'index-logged.html')
@@ -135,6 +100,7 @@ def SignUpView(request):
     
 
 def SignInView(request):
+
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -144,12 +110,8 @@ def SignInView(request):
         if user is not None:
             login(request, user)
 
-            # Check if the logged-in user is a superuser
-            if user.is_superuser:
-                return redirect('admin_dashboard')  # Replace 'admin_index' with the name of the admin dashboard URL pattern
-            
-            return redirect('logged_in')  # Redirect regular users to the logged-in page
-
+            return redirect('logged_in')
+        
         else:
             messages.error(request, "Invalid login credentials")
             return redirect('signin')
@@ -267,72 +229,19 @@ def reservation_form_view(request):
         if form.is_valid():
             reservation = form.save(commit=False)
             reservation.user = request.user
-
-            # Define distance map for routes
-            distance_map = {
-                ('lucban_terminal', 'lucena_grand_terminal'): 23.2,
-                ('lucban_terminal', 'tayabas_city_public_market'): 12.9,
-                ('tayabas_city_public_market', 'lucena_grand_terminal'): 9.2,
-            }
-
-            # Extract pickup and dropoff locations from the form
-            pickup_location_key = reservation.pickup_location.split('_pick')[0]
-            dropoff_location_key = reservation.dropoff_location.split('_drop')[0]
-
-            # Get the distance for the selected route
-            distance = distance_map.get((pickup_location_key, dropoff_location_key), 0)
-
-            # Define fare computation constants
-            fare_per_km = 17 / 4  # 17 pesos per 4 kilometers
-            base_fare = distance * fare_per_km
-
-            # Map vehicle to seat count
-            seat_map = {
-                'Toyota Corolla': 6,
-                'Modernized PUV V1': 15,
-                'Modernized PUV V2': 15,
-            }
-            seat_count = seat_map.get(reservation.vehicle, 0)
-
-            # Calculate total fare
-            total_fare = base_fare * seat_count
-            if reservation.roundtrip:
-                total_fare *= 2  # Double the fare for roundtrip
-
-            # Assign the calculated total fare
-            reservation.total_fare = round(total_fare, 2)
-
-            # Save the reservation
             reservation.save()
-            print("Form valid")
-
+            print("form valid")
+            # Save the form data to the database
+            # form.save()
             # Redirect to a success page
             return redirect('reservation_success', reservation_id=reservation.id)
         else:
             print("Reservation Form is not valid!")
             print(form.errors)  # Print the form errors to see what's wrong
             return render(request, 'reservation/reservation-form.html', {'form': form})
-    else:
+    else:   
         form = ReservationForm()
         return render(request, 'reservation/reservation-form.html', {'form': form})
-
-def CalculateFareView(request):
-    if request.method == "POST":
-        pickup_location = request.POST.get('pickup_location')
-        dropoff_location = request.POST.get('dropoff_location')
-        vehicle = request.POST.get('vehicle')
-
-        # Example fare calculation logic
-        fare = 0
-        if pickup_location and dropoff_location and vehicle:
-            if pickup_location == "A" and dropoff_location == "B":
-                fare = 500
-            if vehicle == "Toyota Corolla":
-                fare += 100
-
-        return JsonResponse({'fare': fare})
-
-    return JsonResponse({'error': 'Invalid request'}, status=400)
 
 @login_required
 def ReservationSuccessView(request, reservation_id):

@@ -5,7 +5,7 @@
     Book Your Travel | Byahe Travel
 {% endblock title %}
 <html lang="en">
-
+{% block head %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     {% block style %}
     <link rel="stylesheet" href="{% static '/styles/reservation-styles.css' %}">
     {% endblock style%}
@@ -24,6 +26,7 @@
     
     {% include "loader.html" %}
 </head>
+{% endblock head %}
 
 {% block navbar %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -199,7 +202,7 @@
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="totalFare" class="form-label">Total Fare</label>
-                        <input class="form-control" type="text" id="totalFare" name = "total_fare" placeholder="">
+                        <input class="form-control" type="text" id="totalFare" name="total_fare" placeholder="" readonly>
                     </div>
                     <div class="col-md-6">
                         <div class="form-check mt-4">
@@ -229,6 +232,33 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const vehicleSelect = document.getElementById("vehicle");
+        const roundtripCheckbox = document.getElementById("roundtrip");
+        const totalFareField = document.getElementById("totalFare");
+
+        function calculateTotalFare() {
+            const selectedVehicle = vehicleSelect.options[vehicleSelect.selectedIndex];
+            const baseFare = selectedVehicle.dataset.fare ? parseFloat(selectedVehicle.dataset.fare) : 0;
+            const isRoundtrip = roundtripCheckbox.checked;
+            
+            let totalFare = baseFare;
+
+            // Add roundtrip multiplier if checked
+            if (isRoundtrip) {
+                totalFare *= 2;
+            }
+
+            // Update the Total Fare field
+            totalFareField.value = totalFare ? `₱${totalFare.toFixed(2)}` : "";
+        }
+
+        // Add event listeners
+        vehicleSelect.addEventListener("change", calculateTotalFare);
+        roundtripCheckbox.addEventListener("change", calculateTotalFare);
+    });
+</script>
 {% endblock reservation_form %}
 
 {% block footer %}

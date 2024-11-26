@@ -1,0 +1,301 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>BYAHE - Admin - User Profiles</title>
+
+        <link rel="icon" href="{% static 'assets\img\byahe-logo.png' %}" type="image/png">
+
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="{% static 'admin/css/styles.css' %}" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="{% url 'logged_in' %}">BYAHE Dashboard</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <!-- Navbar User Icon-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{% url 'logout'%}">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <!--Sidebar Nav-->
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Dashboard</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-calendar-check"></i></div>
+                                Reservations
+                            </a>
+                            <a class="nav-link" href="vehicles.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
+                                Vehicle
+                            </a>
+                            <a class="nav-link" href="drivers.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-tie"></i></div>
+                                Drivers
+                            </a>
+                            <a class="nav-link" href="users.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                Users
+                            </a>
+                            <a class="nav-link" href="reviews.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
+                                Reviews
+                            </a>
+                            <a class="nav-link" href="tracking.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                GPS Tracking
+                            </a>
+                            <a class="nav-link" href="payment.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-money-bill-wave"></i></div>
+                                On-Hand Payment
+                            </a>                            
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        BYAHE Admin
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Transaction Dashboard</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Manage Transactions and deploy drivers and vehicles.</li>
+                        </ol>
+                        <!--Database Table-->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Transactions
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Payment Method</th>
+                                            <th>Driver/Plate No.</th>
+                                            <th>Vehicle</th>
+                                            <th>Destination</th>
+                                            <th>Fare</th>
+                                            <th>Date of Transaction</th>
+                                            <th>Pickup Date and Dropoff Date</th>
+                                            <th>Rented By</th>
+                                            <th>Travel Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Payment Method</th>
+                                            <th>Driver/Plate No.</th>
+                                            <th>Vehicle</th>
+                                            <th>Destination</th>
+                                            <th>Fare</th>
+                                            <th>Date of Transaction</th>
+                                            <th>Pickup Date and Dropoff Date</th>
+                                            <th>Rented By</th>
+                                            <th>Travel Status</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>On-Site</td>
+                                            <td>ABC123</td>
+                                            <td>Sedan</td>
+                                            <td>New York</td>
+                                            <td>$320,800</td>
+                                            <td>2024/11/20</td>
+                                            <td>2024/11/22 - 2024/11/25</td>
+                                            <td>John Doe</td>
+                                            <td>To pickup</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>GCash</td>
+                                            <td>XYZ789</td>
+                                            <td>Van</td>
+                                            <td>San Francisco</td>
+                                            <td>$170,750</td>
+                                            <td>2024/10/15</td>
+                                            <td>2024/10/18 - 2024/10/20</td>
+                                            <td>Jane Smith</td>
+                                            <td>Picked Up</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ashton Cox</td>
+                                            <td>Cash</td>
+                                            <td>LMN456</td>
+                                            <td>SUV</td>
+                                            <td>Los Angeles</td>
+                                            <td>$86,000</td>
+                                            <td>2024/09/05</td>
+                                            <td>2024/09/07 - 2024/09/09</td>
+                                            <td>Michael Brown</td>
+                                            <td>Dropped off</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cedric Kelly</td>
+                                            <td>On-Site</td>
+                                            <td>OPQ111</td>
+                                            <td>Hatchback</td>
+                                            <td>Chicago</td>
+                                            <td>$433,060</td>
+                                            <td>2024/08/22</td>
+                                            <td>2024/08/24 - 2024/08/26</td>
+                                            <td>Samantha Green</td>
+                                            <td>Picked Up</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>On-Site</td>
+                                            <td>ABC123</td>
+                                            <td>Sedan</td>
+                                            <td>New York</td>
+                                            <td>$320,800</td>
+                                            <td>2024/11/20</td>
+                                            <td>2024/11/22 - 2024/11/25</td>
+                                            <td>John Doe</td>
+                                            <td>To pickup</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>On-Site</td>
+                                            <td>ABC123</td>
+                                            <td>Sedan</td>
+                                            <td>New York</td>
+                                            <td>$320,800</td>
+                                            <td>2024/11/20</td>
+                                            <td>2024/11/22 - 2024/11/25</td>
+                                            <td>John Doe</td>
+                                            <td>To pickup</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>On-Site</td>
+                                            <td>ABC123</td>
+                                            <td>Sedan</td>
+                                            <td>New York</td>
+                                            <td>$320,800</td>
+                                            <td>2024/11/20</td>
+                                            <td>2024/11/22 - 2024/11/25</td>
+                                            <td>John Doe</td>
+                                            <td>To pickup</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Airi Satou</td>
+                                            <td>GCash</td>
+                                            <td>UVW333</td>
+                                            <td>Truck</td>
+                                            <td>Miami</td>
+                                            <td>$162,700</td>
+                                            <td>2024/07/12</td>
+                                            <td>2024/07/15 - 2024/07/17</td>
+                                            <td>Chris Wilson</td>
+                                            <td>To pickup</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brielle Williamson</td>
+                                            <td>GCash</td>
+                                            <td>JKL222</td>
+                                            <td>Bus</td>
+                                            <td>Houston</td>
+                                            <td>$372,000</td>
+                                            <td>2024/06/30</td>
+                                            <td>2024/07/01 - 2024/07/03</td>
+                                            <td>Jessica Taylor</td>
+                                            <td>Dropped off</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brielle Williamson</td>
+                                            <td>GCash</td>
+                                            <td>JKL222</td>
+                                            <td>Bus</td>
+                                            <td>Houston</td>
+                                            <td>$372,000</td>
+                                            <td>2024/06/30</td>
+                                            <td>2024/07/01 - 2024/07/03</td>
+                                            <td>Jessica Taylor</td>
+                                            <td>Dropped off</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brielle Williamson</td>
+                                            <td>GCash</td>
+                                            <td>JKL222</td>
+                                            <td>Bus</td>
+                                            <td>Houston</td>
+                                            <td>$372,000</td>
+                                            <td>2024/06/30</td>
+                                            <td>2024/07/01 - 2024/07/03</td>
+                                            <td>Jessica Taylor</td>
+                                            <td>Dropped off</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brielle Williamson</td>
+                                            <td>GCash</td>
+                                            <td>JKL222</td>
+                                            <td>Bus</td>
+                                            <td>Houston</td>
+                                            <td>$372,000</td>
+                                            <td>2024/06/30</td>
+                                            <td>2024/07/01 - 2024/07/03</td>
+                                            <td>Jessica Taylor</td>
+                                            <td>Dropped off</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brielle Williamson</td>
+                                            <td>GCash</td>
+                                            <td>JKL222</td>
+                                            <td>Bus</td>
+                                            <td>Houston</td>
+                                            <td>$372,000</td>
+                                            <td>2024/06/30</td>
+                                            <td>2024/07/01 - 2024/07/03</td>
+                                            <td>Jessica Taylor</td>
+                                            <td>Dropped off</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'admin/js/scripts.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'admin/assets/demo/chart' %}-area-demo.js"></script>
+        <script src="{% static 'admin/assets/demo/chart' %}-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="{% static 'admin/js/datatables-simple' %}-demo.js"></script>
+    </body>
+</html>
