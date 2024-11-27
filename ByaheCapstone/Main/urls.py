@@ -7,8 +7,8 @@ urlpatterns = [
     path('admin_dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('admin_users/', views.admin_users, name='admin_users'),
     path('delete-user/<int:user_id>/', views.delete_user, name='delete_user'), #DELETE USER
-        path('add-user/', views.add_user, name='add_user'), #ADD USER
-    
+    path('add-user/', views.add_user, name='add_user'), #ADD USER
+    path('add-admin/', views.add_admin, name='add_admin'), #ADD ADMIN
 
 
     path('signup/', views.SignUpView, name='signup'),

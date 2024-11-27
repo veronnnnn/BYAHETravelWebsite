@@ -11,6 +11,25 @@
 {% include "loader.html" %}
 {% endblock style%}
 
+<body>
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel">Notification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% block navbar %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
@@ -30,9 +49,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#vehicles-section">Vehicles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#ratings-and-reviews">Reviews</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#contacts">Contact</a>
@@ -207,132 +223,48 @@
 </section>
 {% endblock vehicles %}
 
-{% block ratings %}
-<section id="ratings-and-reviews-hero">
-
-    <div class="ratings-hero"style="
-    background-image: url('{% static 'images/backgrounds/ratingss.jpg' %}'); /* Replace with actual static path */
-    background-size: 100% auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 250px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    position: relative;
-    z-index: 1;">
-        <h1>Ratings and Reviews</h1>
-    </div>
-
-<section id="ratings-and-reviews">
-    <div class="container my-5">
-        <h3 class="text-center">Ratings and Reviews</h3>
-        <!-- Your existing content (reviews, ratings) goes here -->
-    </div>
-    
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card p-4 shadow-sm overall-rating-card">
-                    <div class="row align-items-center">
-                        <div class="col-md-5 text-center">
-                            <h3 class="mb-0">Overall rating</h3>
-                            <div class="rating-stars my-3">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                            </div>
-                            <div class="overall-score">
-                                <p class="mb-0">5 out of 5</p>
-                                <p class="text-muted">232 reviews</p>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="rating-bar">
-                                <div class="rating-bar-item">
-                                    <span>5 stars</span>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" style="width: 90%;"></div>
-                                    </div>
-                                </div>
-                                <div class="rating-bar-item">
-                                    <span>4 stars</span>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-secondary" style="width: 10%;"></div>
-                                    </div>
-                                </div>
-                                <div class="rating-bar-item">
-                                    <span>3 stars</span>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-secondary" style="width: 0%;"></div>
-                                    </div>
-                                </div>
-                                <div class="rating-bar-item">
-                                    <span>2 stars</span>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-secondary" style="width: 0%;"></div>
-                                    </div>
-                                </div>
-                                <div class="rating-bar-item">
-                                    <span>1 star</span>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-secondary" style="width: 0%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{% block footer %}
+<footer id="contacts">
+    <div class="container-fluid bg-primary text-white py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Left column with Contact Us section -->
+                <div class="col-md-6">
+                    <h2>Contact Us</h2>
+                    <p>Have any questions or need assistance? Contact us today!</p>
+                </div>
+                
+                <!-- Right column with Contact Information -->
+                <div class="col-md-6 contact-info">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <a href="mailto:lucbangenesis@yahoo.com" class="text-white">lucbangenesis@yahoo.com</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>0913 123 1234</span>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-phone mr-2"></i>
+                            <span>042 - 1234 - 123</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Gulang-Gulang, Lucena City, Quezon Province, Philippines</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
+</footer>
+{% endblock footer %}
 
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <!-- Single Review -->
-            <div class="card p-3 mb-3 shadow-sm">
-                <div class="d-flex align-items-center mb-2">
-                    <div class="rating-stars">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="ms-3">
-                        <h6>Ann Nica, 03/16/2024</h6>
-                    </div>
-                </div>
-                <p class="mb-0">Great experience with byahе, they offer amazing travel services especially their convenient online payment with gcash. Will definitely book here again!</p>
-            </div>
-            <!-- Repeat for other reviews -->
-            <div class="card p-3 mb-3 shadow-sm">
-                <div class="d-flex align-items-center mb-2">
-                    <div class="rating-stars">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <div class="ms-3">
-                        <h6>Zerep Adalph, 03/28/2024</h6>
-                    </div>
-                </div>
-                <p class="mb-0">Great experience with byahе, they offer amazing travel services especially their convenient online payment with gcash. Will definitely book here again!</p>
-            </div>
-            <!-- Add more reviews as needed -->
-        </div>
-    </div>
-</section>
-{% endblock ratings %}
+</body>
 
 {% block script_index %}    
 <script>
+
     //script for class a vehicles
     document.getElementById("vehicle-cards").addEventListener("click", function(event) {
         const target = event.target.closest(".vehicle-card");

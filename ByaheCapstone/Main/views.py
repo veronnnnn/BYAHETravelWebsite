@@ -13,14 +13,16 @@ from django.core.mail import send_mail
 from django.http import HttpResponse
 from .forms import ReservationForm
 from django.http import JsonResponse
+from .decorators import admin_only
 
 
 #HOMEPAGE
 def Home(request):
     return render(request, 'index.html')
 #ADMIN DASHBOARD
-@login_required
+@admin_only
 def admin_dashboard(request):
+    
     # Fetch data from the database
     users = User.objects.all()
     reservations = Reservation.objects.all()
@@ -31,7 +33,7 @@ def admin_dashboard(request):
     })
 
 #ADMIN user profiles
-@login_required
+@admin_only
 def admin_users(request):
     # Fetch data from the database
     
@@ -40,7 +42,7 @@ def admin_users(request):
     return render(request, 'admin/users.html', {
         'users': users,
     })
-
+@admin_only
 def add_user(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -68,7 +70,38 @@ def add_user(request):
 
     return redirect('admin_users') 
 
+@admin_only
+def add_admin(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        confirm_password = request.POST.get("confirm_password")
+
+        if password != confirm_password:
+            messages.error(request, "Passwords do not match.")
+            return redirect('admin_users')
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists.")
+            return redirect('admin_users')
+
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Email is already in use.")
+            return redirect('admin_users')
+
+        # Create the admin user
+        admin_user = User.objects.create_user(username=username, email=email, password=password)
+        admin_user.is_staff = True  # Mark the user as an admin
+        admin_user.save()
+
+        messages.success(request, "Admin created successfully.")
+        return redirect('admin_users')
+
+    return redirect('admin_users')
+
 #ADMIN delete user
+@admin_only
 def delete_user(request, user_id):
     user = get_object_or_404(User, id=user_id)
     if request.method == "POST":
@@ -77,6 +110,15 @@ def delete_user(request, user_id):
         return redirect('admin_users')  # Replace with the name of the URL pattern for the user profiles page
     return render(request, 'delete_user_confirmation.html', {'user': user})
 
+#
+def some_view(request):
+    # Example: Admin check
+    if not request.user.is_staff:  # Or your custom check
+        messages.error(request, "You are not authorized to access the admin dashboard.")
+        return render(request, 'logged_in.html')  # Renders the template directly to process messages
+    
+    # Logic for authorized users
+    return render(request, 'admin_index.html')
 
 @login_required
 def LoggedInView(request):
@@ -172,10 +214,11 @@ def SignInView(request):
             login(request, user)
 
             # Check if the logged-in user is a superuser
-            if user.is_superuser:
+            if user.is_staff:
                 return redirect('admin_dashboard')  # Replace 'admin_index' with the name of the admin dashboard URL pattern
             
             return redirect('logged_in')  # Redirect regular users to the logged-in page
+            
 
         else:
             messages.error(request, "Invalid login credentials")
