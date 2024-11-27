@@ -41,6 +41,33 @@ def admin_users(request):
         'users': users,
     })
 
+def add_user(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists. Please choose another one.")
+        elif User.objects.filter(email=email).exists():
+            messages.error(request, "Email already registered. Please use another one.")
+        else:
+            user = User.objects.create_user(
+                username=username,
+                email=email,
+                password=password,
+                first_name=first_name,
+                last_name=last_name
+            )
+            user.save()
+            messages.success(request, "User added successfully!")
+
+        return redirect('admin_users')
+
+    return redirect('admin_users') 
+
 #ADMIN delete user
 def delete_user(request, user_id):
     user = get_object_or_404(User, id=user_id)
