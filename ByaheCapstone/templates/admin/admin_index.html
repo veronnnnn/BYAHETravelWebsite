@@ -19,7 +19,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="{% url 'logged_in' %}">BYAHE Dashboard</a>
+            <a class="navbar-brand ps-3" href="{% url 'admin_dashboard' %}">BYAHE Dashboard</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -50,11 +50,11 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-calendar-check"></i></div>
                                 Reservations
                             </a>
-                            <a class="nav-link" href="vehicles.html">
+                            <a class="nav-link" href="{% url 'admin_vehicles' %}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
                                 Vehicle
                             </a>
-                            <a class="nav-link" href="drivers.html">
+                            <a class="nav-link" href="{% url 'driver_dashboard' %}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-tie"></i></div>
                                 Drivers
                             </a>
@@ -62,15 +62,15 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Users
                             </a>
-                            <a class="nav-link" href="reviews.html">
+                            <a class="nav-link" href="{% url 'admin_reviews' %}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
                                 Reviews
-                            </a>
-                            <a class="nav-link" href="tracking.html">
+                            </a>    
+                            <a class="nav-link" href="{% url 'admin_tracking' %}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-map-marker-alt"></i></div>
                                 GPS Tracking
                             </a>
-                            <a class="nav-link" href="payment.html">
+                            <a class="nav-link" href="{% url 'admin_payment' %}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-money-bill-wave"></i></div>
                                 On-Hand Payment
                             </a>                            

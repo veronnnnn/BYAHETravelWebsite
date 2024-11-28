@@ -20,7 +20,7 @@ from .decorators import admin_only
 def Home(request):
     return render(request, 'index.html')
 #ADMIN DASHBOARD
-@admin_only
+
 def admin_dashboard(request):
     
     # Fetch data from the database
@@ -33,7 +33,7 @@ def admin_dashboard(request):
     })
 
 #ADMIN user profiles
-@admin_only
+
 def admin_users(request):
     # Fetch data from the database
     
@@ -42,7 +42,7 @@ def admin_users(request):
     return render(request, 'admin/users.html', {
         'users': users,
     })
-@admin_only
+
 def add_user(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -50,7 +50,12 @@ def add_user(request):
         password = request.POST.get("password")
         first_name = request.POST.get("first_name")
         last_name = request.POST.get("last_name")
+        confirm_password = request.POST.get("confirm_password")
 
+        if password != confirm_password:
+            messages.error(request, "Passwords do not match.")
+            return redirect('admin_users')
+        
         if User.objects.filter(username=username).exists():
             messages.error(request, "Username already exists. Please choose another one.")
         elif User.objects.filter(email=email).exists():
@@ -70,7 +75,7 @@ def add_user(request):
 
     return redirect('admin_users') 
 
-@admin_only
+
 def add_admin(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -100,8 +105,39 @@ def add_admin(request):
 
     return redirect('admin_users')
 
+def add_driver(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        contact_number = request.POST['contact_number']
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+
+        if password != confirm_password:
+            messages.error(request, "Passwords do not match.")
+            return redirect('admin_dashboard')
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists.")
+            return redirect('admin_dashboard')
+
+        # Create the driver user
+        driver = User.objects.create_user(
+            username=username,
+            first_name=first_name,
+            last_name=last_name,
+            password=password
+        )
+        driver.is_driver = True  # Custom field to mark as a driver
+        driver.contact_number = contact_number
+        driver.save()
+
+        messages.success(request, "Driver added successfully!")
+        return redirect('admin_dashboard')
+
 #ADMIN delete user
-@admin_only
+
 def delete_user(request, user_id):
     user = get_object_or_404(User, id=user_id)
     if request.method == "POST":
@@ -110,7 +146,7 @@ def delete_user(request, user_id):
         return redirect('admin_users')  # Replace with the name of the URL pattern for the user profiles page
     return render(request, 'delete_user_confirmation.html', {'user': user})
 
-#
+#Check if Admin or not
 def some_view(request):
     # Example: Admin check
     if not request.user.is_staff:  # Or your custom check
@@ -120,7 +156,67 @@ def some_view(request):
     # Logic for authorized users
     return render(request, 'admin_index.html')
 
-@login_required
+
+#DRIVERS
+
+def driver_dashboard(request):
+    
+    # Fetch data from the database
+    users = User.objects.all()
+    reservations = Reservation.objects.all()
+
+    return render(request, 'admin/drivers.html', {
+        'users': users,
+        'reservations': reservations,
+    })
+
+
+def admin_tracking(request):
+    
+    # Fetch data from the database
+    users = User.objects.all()
+    reservations = Reservation.objects.all()
+
+    return render(request, 'admin/tracking.html', {
+        'users': users,
+        'reservations': reservations,
+    })
+
+
+def admin_vehicles(request):
+    
+    # Fetch data from the database
+    users = User.objects.all()
+    reservations = Reservation.objects.all()
+
+    return render(request, 'admin/vehicles.html', {
+        'users': users,
+        'reservations': reservations,
+    })
+
+def admin_payment(request):
+    
+    # Fetch data from the database
+    users = User.objects.all()
+    reservations = Reservation.objects.all()
+
+    return render(request, 'admin/payment.html', {
+        'users': users,
+        'reservations': reservations,
+    })
+
+def admin_reviews(request):
+    
+    # Fetch data from the database
+    users = User.objects.all()
+    reservations = Reservation.objects.all()
+
+    return render(request, 'admin/reviews.html', {
+        'users': users,
+        'reservations': reservations,
+    })
+
+
 def LoggedInView(request):
     return render(request, 'index-logged.html')
 
@@ -267,7 +363,7 @@ def ForgotPassword(request):
 
     return render(request, 'forgot-password.html')
 
-@login_required
+
 def ForgotPass2(request, reset_id): #password reset sent view
 
     if PasswordReset.objects.filter(reset_id=reset_id).exists():
@@ -330,7 +426,7 @@ def ChangePassword(request, reset_id):
         return render(request, 'change-pass.html')
 
 #reservation form view
-@login_required
+
 def reservation_form_view(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST, request.FILES)
@@ -404,7 +500,7 @@ def CalculateFareView(request):
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
-@login_required
+
 def ReservationSuccessView(request, reservation_id):
     reservation = get_object_or_404(Reservation, id=reservation_id)
 

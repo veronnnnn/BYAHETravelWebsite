@@ -2,13 +2,21 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.Home, name='home'),
+    path('', views.Home, name='home'),  
 
     path('admin_dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('admin_users/', views.admin_users, name='admin_users'),
     path('delete-user/<int:user_id>/', views.delete_user, name='delete_user'), #DELETE USER
     path('add-user/', views.add_user, name='add_user'), #ADD USER
     path('add-admin/', views.add_admin, name='add_admin'), #ADD ADMIN
+    path('add-driver/', views.add_driver, name='add_driver'), #ADD DRIVER
+
+    path('driver_dashboard/', views.driver_dashboard, name='driver_dashboard'),
+
+    path('admin_vehicles/', views.admin_vehicles, name='admin_vehicles'),
+    path('admin_tracking/', views.admin_tracking, name='admin_tracking'),
+    path('admin_payment/', views.admin_payment, name='admin_payment'),
+    path('admin_reviews/', views.admin_payment, name='admin_reviews'),
 
 
     path('signup/', views.SignUpView, name='signup'),
